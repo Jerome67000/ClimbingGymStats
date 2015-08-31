@@ -6,12 +6,14 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var haml = require('gulp-living-ruby-haml');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  haml: ['./www/haml/**/*.haml']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['haml', 'sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -27,8 +29,18 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+//////////////////
+// haml -> html
+//////////////////
+gulp.task('haml', function() {
+  gulp.src('./www/haml/**/*.haml', {read: true}).
+    pipe(haml()).
+    pipe(gulp.dest('./www/'));
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.haml, ['haml']);
 });
 
 gulp.task('install', ['git-check'], function() {
