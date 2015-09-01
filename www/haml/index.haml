@@ -20,7 +20,8 @@
     %script(src="js/services.js")
 
     / controller js
-    -# %script(src="js/controllers/tabsCtrl.js")
+    %script(src="js/controllers/tabsCtrl.js")
+    %script(src="js/controllers/sessionsCtrl.js")
 
     / directive
 
@@ -28,7 +29,7 @@
     %script(src="js/libs/moment.js")
     %script(src="js/libs/momentjs_fr_locales.js")
 
-  %body(ng-app ="app")
-    %ion-nav-bar.bar-stable
+  %body(ng-app="app")
+    %ion-nav-bar.bar-positive
       %ion-nav-back-button
     %ion-nav-view

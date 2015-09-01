@@ -1,5 +1,11 @@
-<ion-view view-title='Climbing Gym Stats'>
+<ion-view ng-controller='sessionsCtrl' view-title='Climbing Gym Stats'>
   <ion-content class='padding'>
-    Séances
+    <div class='list'>
+      <a class='item item-icon-left' ng-repeat='session in sessions'>
+        <i class='icon ion-android-checkbox-blank' ui-sref=''></i>
+        {{session.title}}
+        <span class='item-note'>{{session.created_at}}</span>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

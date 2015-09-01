@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
+var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -54,13 +54,13 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   // Pour avoir la même position de la tab-bar sur toutes les platformes !
-  // $ionicConfigProvider.navBar.alignTitle("center");
-  // $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.navBar.alignTitle("center");
+  $ionicConfigProvider.tabs.position('top');
   // $ionicConfigProvider.backButton.previousTitleText(false).text(' ');
   // $ionicConfigProvider.backButton.icon('ion-android-arrow-back');
   //
-  // if (ionic.Platform.isAndroid())
-  //   $ionicConfigProvider.scrolling.jsScrolling(false);
+  if (ionic.Platform.isAndroid())
+    $ionicConfigProvider.scrolling.jsScrolling(false);
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -69,20 +69,20 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
   $stateProvider
 
   // ACCOUNT
-  .state('start', {
-      url: '/start',
-      templateUrl: 'partials/page-start.html'
-  })
-
-  .state('signin', {
-      url: '/signin',
-      templateUrl: 'partials/page-signin.html'
-  })
-
-  .state('create-account', {
-      url: '/create-account',
-      templateUrl: 'partials/page-create-account.html'
-  })
+  // .state('start', {
+  //     url: '/start',
+  //     templateUrl: 'partials/page-start.html'
+  // })
+  //
+  // .state('signin', {
+  //     url: '/signin',
+  //     templateUrl: 'partials/page-signin.html'
+  // })
+  //
+  // .state('create-account', {
+  //     url: '/create-account',
+  //     templateUrl: 'partials/page-create-account.html'
+  // })
 
   // TABS
     .state('tab', {
@@ -91,8 +91,8 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
     templateUrl: 'html/tabs.html'
   })
 
-  .state('tab.seance', {
-    url: '/seances',
+  .state('tab.sessions', {
+    url: '/sessions',
     views: {
       'Seance': {
         templateUrl: 'html/partials/tabs/tab-seances.html'
@@ -118,7 +118,12 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
     }
   })
 
+  .state('signin', {
+      url: '/signin',
+      templateUrl: 'partials/page-signin.html'
+  })
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/seances');
+  $urlRouterProvider.otherwise('/tab/sessions');
 
 });
