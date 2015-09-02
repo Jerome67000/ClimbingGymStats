@@ -3,6 +3,6 @@
     %button.button.button-icon.icon.ion-plus-circled(ng-click="showNewSessionPopup()")
     .list
       %a.item.item-icon-left(ng-repeat="session in sessions")
-        %i.icon.ion-android-checkbox-blank(ui-sref="")
+        %i.icon.ion-android-checkbox-blank
         {{session.title}}
         %span.item-note {{session.created_at}}

@@ -1,26 +1,59 @@
-app.controller('sessionsCtrl', function($scope, $ionicPopup) {
+app.controller('sessionsCtrl', function($scope, $state, $ionicPopup) {
+
 
   $scope.showNewSessionPopup = function() {
-    $scope.session = {};
 
-  // An elaborate, custom popup
-  var myPopup = $ionicPopup.show({
-    template: '<input type="text" placeholder="Séance #23" ng-model="session.title"><input type="text" placeholder="Salle d escalade" ng-model="session.gym"><input type="text" placeholder="note" ng-model="session.note">',
-    title: 'Nouvelle séance',
-    scope: $scope,
-    buttons: [
-      { text: 'Annuler' },
-      {
-        text: '<b>Ok</b>',
-        type: 'button-positive',
-      },
-    ]
-  });
-  myPopup.then(function(res) {
-    console.log('Tapped!', res);
-    $state.go("tab.stats");
-  });
+  var myFirebaseRef = new Firebase("https://climbinggymstats.firebaseio.com/");
+
+    myFirebaseRef.createUser({
+      nickname : "Admin",
+      email    : "jerome.gully0@gmail.com",
+      password : "brst12",
+      climb_key : "484fefes1"
+    }, function(error, userData) {
+      if (error) {
+        console.log("Error creating user:", error);
+      } else {
+        console.log("Successfully created user account with uid:", userData.uid);
+      }
+    });
+
+  //   $scope.session = {};
+  //
+  // // An elaborate, custom popup
+  // var myPopup = $ionicPopup.show({
+  //   templateUrl: 'html/partials/modals/new-session.html',
+  //   title: 'Nouvelle séance',
+  //   scope: $scope,
+  //   buttons: [
+  //     { text: 'Annuler' },
+  //     {
+  //       text: '<b>Ok</b>',
+  //       type: 'button-positive',
+  //     },
+  //   ]
+  // });
+  // myPopup.then(function(res) {
+  //   console.log('Tapped!', res);
+  //   createNewSession();
+  //   $state.go("tab.stats");
+  // });
   };
+
+  $scope.createNewSession = function () {
+
+
+    myFirebaseRef.set({
+      title: "Hello World!",
+      author: "Firebase",
+      location: {
+        city: "San Francisco",
+        state: "California",
+        zip: 94103
+      }
+    });
+
+  }
 
   $scope.sessions = [
         {

@@ -15,11 +15,17 @@
     / cordova script (this will be a 404 during development)
     %script(src="cordova.js")
 
+    / Firebase
+    %script(src="https://cdn.firebase.com/js/client/2.2.9/firebase.js")
+    / AngularFire
+    %script(src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js")
+
     / your app's js
     %script(src="js/app.js")
     %script(src="js/services.js")
 
     / controller js
+    %script(src="js/controllers/accountCtrl.js")
     %script(src="js/controllers/tabsCtrl.js")
     %script(src="js/controllers/sessionsCtrl.js")
 

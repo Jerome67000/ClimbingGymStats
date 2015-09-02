@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
+var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -69,15 +69,14 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
   $stateProvider
 
   // ACCOUNT
-  // .state('start', {
-  //     url: '/start',
-  //     templateUrl: 'partials/page-start.html'
-  // })
-  //
-  // .state('signin', {
-  //     url: '/signin',
-  //     templateUrl: 'partials/page-signin.html'
-  // })
+  .state('signin', {
+      url: '/signin',
+      templateUrl: 'html/pages/signin.html'
+  })
+  .state('create-acc', {
+      url: '/create-acc',
+      templateUrl: 'html/pages/create-acc.html'
+  })
   //
   // .state('create-account', {
   //     url: '/create-account',
@@ -95,7 +94,7 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
     url: '/sessions',
     views: {
       'Seance': {
-        templateUrl: 'html/partials/tabs/tab-seances.html'
+        templateUrl: 'html/tabs/tab-sessions.html'
       }
     }
   })
@@ -104,7 +103,7 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
     url: '/stats',
     views: {
       'Stats': {
-        templateUrl: 'html/partials/tabs/tab-stats.html'
+        templateUrl: 'html/tabs/tab-stats.html'
       }
     }
   })
@@ -113,17 +112,12 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova'])
     url: '/events',
     views: {
       'Events': {
-        templateUrl: 'html/partials/tabs/tab-events.html'
+        templateUrl: 'html/tabs/tab-events.html'
       }
     }
   })
 
-  .state('signin', {
-      url: '/signin',
-      templateUrl: 'partials/page-signin.html'
-  })
-
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/sessions');
+  $urlRouterProvider.otherwise('/signin');
 
 });

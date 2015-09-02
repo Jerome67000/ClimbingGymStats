@@ -1,6 +1,12 @@
-var remote_server = "https://climbinggymstats.firebaseio.com/";
+var app_url = "https://climbinggymstats.firebaseio.com/";
+window.app_url = app_url;
 
 // ///// USERS
+app.factory('Auth', function($firebaseAuth) {
+   var usersRef = new Firebase(app_url);
+   return $firebaseAuth(usersRef);
+ })
+
 // app.factory('UserSessionFactory', ['$resource',function($resource){
 //   return $resource(remote_server + '/users/sign_in.json', {}, {
 //     delete: { url: remote_server + '/users/sign_out.json', method: "DELETE" }

@@ -1,0 +1,13 @@
+%ion-view(view-title="Climbing Gym Stats" ng-controller="accountCtrl")
+  %ion-content.padding
+    %img(src="assets/img/app_icon.png")
+
+    .list.list-inset
+      %label.item.item-input
+        %input(ng-model="email" placeholder="email" type="email")
+      %label.item.item-input
+        %input(ng-model="password" placeholder="password" type="password")
+    %button.button.button-full.button-positive(ng-click="login()")
+      Log me
+    %button.button.button-clear.button-positive(ui-sref="create-acc")
+      Create account
