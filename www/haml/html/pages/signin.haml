@@ -3,11 +3,12 @@
     %img(src="assets/img/app_icon.png")
 
     .list.list-inset
-      %label.item.item-input
-        %input(ng-model="email" placeholder="email" type="email")
-      %label.item.item-input
-        %input(ng-model="password" placeholder="password" type="password")
-    %button.button.button-full.button-positive(ng-click="login()")
-      Log me
+      %form(ng-submit="login()")
+        %label.item.item-input
+          %input(ng-model="user.email" placeholder="email" type="email")
+        %label.item.item-input
+          %input(ng-model="user.password" placeholder="password" type="password")
+        %button.button.button-full.button-positive(type="submit")
+          Log me
     %button.button.button-clear.button-positive(ui-sref="create-acc")
       Create account
