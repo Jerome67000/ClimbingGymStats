@@ -5,14 +5,15 @@ app.controller('accountCtrl', function($scope, $state, Auth) {
 
   $scope.login = function() {
     firebase.authWithPassword({
-      email    : $scope.user.email,
-      password : $scope.user.password
+        email    : $scope.user.email,
+        password : $scope.user.password
     },
     function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", authData);
+        $state.go("tab.sessions")
       }
     });
   };

@@ -4,6 +4,23 @@
 
 $positive: #10c3c8 !default;
 
+$grad4: #329b00;
+$grad5c: #05428e;
+$grad5b: lighten( $grad5c, 20% );
+$grad5a: lighten( $grad5c, 40% );
+$grad6c: #8c7200;
+$grad6b: lighten( $grad6c, 15% );
+$grad6a: lighten( $grad6c, 30% );
+$grad7c: #cf1000;
+$grad7b: lighten( $grad7c, 15% );
+$grad7a: lighten( $grad7c, 30% );
+$grad8c: #7010b5;
+$grad8b: lighten( $grad8c, 15% );
+$grad8a: lighten( $grad8c, 30% );
+$grad9c: #000;
+$grad9b: lighten( $grad9c, 15% );
+$grad9a: lighten( $grad9c, 30% );
+
 /*----------------------------*\
     $FONT
 \*----------------------------*/

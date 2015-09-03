@@ -7,6 +7,7 @@ app.factory('Auth', function($firebaseAuth) {
    return $firebaseAuth(usersRef);
  })
 
+ // ///// SESSIONS
 // app.factory('UserSessionFactory', ['$resource',function($resource){
 //   return $resource(remote_server + '/users/sign_in.json', {}, {
 //     delete: { url: remote_server + '/users/sign_out.json', method: "DELETE" }

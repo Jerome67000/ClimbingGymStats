@@ -1,0 +1,18 @@
+%ion-modal-view(ng-controller="sessionCtrl")
+  %ion-header-bar.bar-positive
+    %h1.title Séance : {{session.title}}
+  %ion-content.padding.session
+    %button.button.button-icon.icon.ion-plus-circled(ng-click="showNewRoutePopup()")
+
+    .session-summary.padding
+      %p.routes-validate Voies réussie {{session.routes_count}} sur {{session.routes_validate}}
+      %p.best-grad Meilleure voie {{session.best_grad}}
+      %p.average-grad Cotation moyenne {{session.average_grad}}
+
+    .list.padding
+      %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
+        %i.icon.ion-android-checkbox-blank
+        {{route.title}}
+        %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.validate}")
+        -# %i.icon(ng-class="route.validate ? 'route-validate' : 'route-invalidate'"
+        -#                                     ng-class="route.validate ? 'ion-android-checkmark-circle' : 'ion-android-checkbox-blank'")
