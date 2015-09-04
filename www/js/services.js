@@ -5,7 +5,11 @@ window.app_url = app_url;
 app.factory('Auth', function($firebaseAuth) {
    var usersRef = new Firebase(app_url);
    return $firebaseAuth(usersRef);
- })
+ });
+
+app.factory('UserFactory', function() {
+   return UserFactory;
+ });
 
  // ///// SESSIONS
 // app.factory('UserSessionFactory', ['$resource',function($resource){

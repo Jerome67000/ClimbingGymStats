@@ -3,7 +3,7 @@
     %img(src="assets/img/app_icon.png")
 
     .list.list-inset
-      %form(ng-submit="login()")
+      %form(ng-submit="login2()")
         %label.item.item-input
           %input(ng-model="user.email" placeholder="email" type="email")
         %label.item.item-input
@@ -12,3 +12,5 @@
           Log me
     %button.button.button-clear.button-positive(ui-sref="create-acc")
       Create account
+    %p
+      {{err}}

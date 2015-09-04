@@ -14,9 +14,15 @@
       <label class='item item-input'>
         <input ng-model='user.password' placeholder='password' type='password'>
       </label>
+      <label class='item item-input'>
+        <input ng-model='user.password_conf' placeholder='password confirmation' type='password'>
+      </label>
     </div>
     <button class='button button-full button-positive' ng-click='createAccount()'>
       Créer son compte
     </button>
+    <p>
+      {{err}}
+    </p>
   </ion-content>
 </ion-view>

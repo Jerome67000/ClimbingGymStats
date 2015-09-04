@@ -1,0 +1,15 @@
+{
+	"name" : "ClimbingGymStats Database",
+	"author" : "Jérôme GULLY",
+	"description" : "App to manage clibming gym users with stats and great features",
+	"website" : "www.climbinggymstats.com",
+
+	"gyms" : {
+	},
+
+	"users" : {
+	},
+
+	"sessions" : {
+	}
+}

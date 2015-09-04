@@ -10,5 +10,9 @@
         %input(ng-model="user.climb_num" placeholder="climb num" type="text")
       %label.item.item-input
         %input(ng-model="user.password" placeholder="password" type="password")
+      %label.item.item-input
+        %input(ng-model="user.password_conf" placeholder="password confirmation" type="password")
     %button.button.button-full.button-positive(ng-click="createAccount()")
       Créer son compte
+    %p
+      {{err}}

@@ -2,7 +2,7 @@
   <ion-content class='padding'>
     <img src='assets/img/app_icon.png'>
     <div class='list list-inset'>
-      <form ng-submit='login()'>
+      <form ng-submit='login2()'>
         <label class='item item-input'>
           <input ng-model='user.email' placeholder='email' type='email'>
         </label>
@@ -17,5 +17,8 @@
     <button class='button button-clear button-positive' ui-sref='create-acc'>
       Create account
     </button>
+    <p>
+      {{err}}
+    </p>
   </ion-content>
 </ion-view>

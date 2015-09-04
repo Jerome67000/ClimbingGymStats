@@ -1,0 +1,71 @@
+{
+	"name" : "ClimbingGymStats Database",
+	"author" : "Jérôme GULLY",
+	"description" : "App to manage clibming gym users with stats and great features",
+	"website" : "www.climbinggymstats.com",
+
+	"gyms" : [
+		{
+			"id" : 0,
+			"name" : "Roc en stock",
+			"num" : "03 04 78 54 21",
+			"email" : "efsefse@gmail.com",
+			"siret" : "1515166151561",
+			"created_at": "2015-08-28T12:46:45.348Z",
+			"manager" : {
+				"last_name" : "FFF",
+				"first_name" : "ZZZ",
+				"email" : "efsefse@gmail.com"
+			},
+
+			"events" : [
+				{
+					"id" : 0,
+					"title" : "Apérooo",
+					"description" : "Un petit apéro entre grimpeurs",
+					"picture" : "http://fefssef.com/pict.png",
+					"created_at": "2015-08-28T12:46:45.348Z",
+					"updated_at": "2015-08-28T12:46:45.348Z"
+				}
+			]
+		}
+	],
+
+	"users" : [
+		{
+			"id" : 0,
+			"nickname" : "Jeee",
+			"first_name" : "ZZZ",
+			"last_name" : "FFF",
+			"age" : 27,
+			"email" : "efsefse@gmail.com",
+			"created_at": "2015-08-28T12:46:45.348Z"
+		}
+	],
+
+	"sessions" : [
+		{
+			"id" : 0,
+			"title" : "session 1",
+			"created_at": "2015-08-28",
+			"note" : "Très bonne séance",
+			"routes" : [
+				{
+					"id" : 0,
+					"title" : "6b+ verticale",
+					"grade" : {
+						"num" : 6,
+						"letter" : "b",
+						"is_plus" : true
+					},
+					"finished" : true,
+					"flash" : true,
+					"note" : "Belle voie en dièdre",
+					"picture" : "http://fefssef.com/pict.png",
+					"climb_style" : "Moulinette",
+					"route_type" : "Verticale"
+				}
+			]
+		}
+	]
+}
