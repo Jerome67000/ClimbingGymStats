@@ -1,5 +1,15 @@
-<ion-view view-title='Climbing Gym Stats'>
+<ion-view ng-controller='eventsCtrl' view-title='Climbing Gym Stats'>
   <ion-content class='padding'>
-    Events
+    <div class='card' ng-repeat='event in events'>
+      <div class='item item-divider'>
+        {{event.title}}
+      </div>
+      <div class='item item-text-wrap'>
+        {{event.description}}
+      </div>
+      <div class='item item-divider'>
+        {{event.date}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -81,23 +81,62 @@
 	}
 }
 
+good way for my database app RESTful hierarchy
+
+myapp {
+	"gyms": {
+		"0": {},
+		"1": {},
+		"2": {}
+	},
+	"users" : {
+		"0" : {},
+		"1": {},
+		"2": {}
+	},
+	"sessions" : {
+		"0" : {
+			"user_id": {
+				"session_id": {
+					"routes": {
+						"0": {
+
+						},
+						"1": {
+
+						},
+						"2": {
+
+						},
+					}
+				}
+			}
+		},
+		"1": {},
+		"2": {}
+	},
+}
+
 What i need with RESTful :
 
+// GYMS
 gyms/
 	GET all gym objects
-	POST : I put manually a new gym with id: 0, id: 1, id:2 ...
+	POST : I put manually a new gym with id: 0, 1, 2 ...
 gyms/:gym_id
 	GET the gym corresponding to the id
 		exemple : gyms/0
 gyms/:gym_id/users
 	GET all users from a specific gym
 
+// USERS
 users/
 	GET all users
-	POST create a new user, i would have a user_id numeric like 0, 1, 2...
+	POST create a new user, i would have a user_id numeric like id 0, 1, 2...
 users/:user_id
 	GET the user corresponding to the id
 
+// SESSIONS
 sessions/
 	GET all sessions objects
 sessions/:user_id

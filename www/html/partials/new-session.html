@@ -1,3 +1,14 @@
-<input ng-model='session.title' placeholder='Séance #23' type='text'>
-<input ng-model='session.gym' placeholder='Salle d escalade' type='text'>
-<input ng-model='session.note' placeholder='note' type='text'>
+<div class='list'>
+  <label class='item item-input item-stacked-label'>
+    <span class='input-label'>Titre</span>
+    <input ng-model='session.title' placeholder='Séance #23' type='text'>
+  </label>
+  <label class='item item-input item-stacked-label'>
+    <span class='input-label'>Salle</span>
+    <input ng-model='session.gym' placeholder="Salle d'escalade" type='text'>
+  </label>
+  <label class='item item-input item-stacked-label'>
+    <span class='input-label'>Note</span>
+    <input ng-model='session.note' placeholder='note' type='text'>
+  </label>
+</div>

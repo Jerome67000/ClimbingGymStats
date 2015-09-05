@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $firebaseArray, Auth) {
+app.controller('accountCtrl', function($scope, $state, $firebaseArray) {
 
   var firebase = new Firebase(window.app_url);
   $scope.user = {};
@@ -9,11 +9,10 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, Auth) {
   $scope.user.climb_id = null;
 
   $scope.login = function() {
-    $scope.err = null;
     firebase.authWithPassword({
         email    : $scope.user.email,
         password : $scope.user.password
-    }).then(
+    },
     function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);

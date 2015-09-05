@@ -2,13 +2,61 @@ var app_url = "https://climbinggymstats.firebaseio.com/";
 window.app_url = app_url;
 
 // ///// USERS
-app.factory('Auth', function($firebaseAuth) {
-   var usersRef = new Firebase(app_url);
-   return $firebaseAuth(usersRef);
- });
+app.factory("Auth", function($firebaseAuth) {
+  var usersRef = new Firebase(app_url+"/users");
+  return $firebaseAuth(usersRef);
+})
 
-app.factory('UserFactory', function() {
-   return UserFactory;
+app.factory('GradesFactory', function() {
+
+  var factory = {
+    grades: [
+      {
+        title: "5a",
+        num: 5,
+        letter: "a",
+        plus: false,
+      },
+      {
+        title: "5a+",
+        num: 5,
+        letter: "a",
+        plus: true,
+      },
+      {
+        title: "5b",
+        num: 5,
+        letter: "b",
+        plus: false,
+      },
+      {
+        title: "5b+",
+        num: 5,
+        letter: "b",
+        plus: true,
+      },
+      {
+        title: "5c",
+        num: 5,
+        letter: "c",
+        plus: false,
+      },
+      {
+        title: "5c+",
+        num: 5,
+        letter: "c",
+        plus: true,
+      },
+    ],
+    getGrades: function() {
+      return factory.grades;
+    },
+    getGrade: function(id) {
+      return factory.grades[id];
+    },
+  };
+
+  return factory;
  });
 
  // ///// SESSIONS

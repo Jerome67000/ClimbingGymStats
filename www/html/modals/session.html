@@ -5,14 +5,14 @@
   <ion-content class='padding session'>
     <button class='button button-icon icon ion-plus-circled' ng-click='showNewRoutePopup()'></button>
     <div class='session-summary padding'>
-      <p class='routes-validate'>Voies réussie {{session.routes_count}} sur {{session.routes_validate}}</p>
-      <p class='best-grad'>Meilleure voie {{session.best_grad}}</p>
+      <p class='routes-validate'>Voies réussie {{session.routes_count}} sur {{session.validate_count}}</p>
+      <p class='best-grad'>Meilleure voie {{session.best_route.grade_title}}</p>
       <p class='average-grad'>Cotation moyenne {{session.average_grad}}</p>
     </div>
     <div class='list padding'>
       <a class='item item-icon-left item-icon-right' ng-repeat='route in routes'>
         <i class='icon ion-android-checkbox-blank'></i>
-        {{route.title}}
+        {{route.grade_title + " " + route.route_type}}
         <i class='icon route-validate' ng-class="{ 'ion-android-checkmark-circle': route.validate}"></i>
       </a>
     </div>
