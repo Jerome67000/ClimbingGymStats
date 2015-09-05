@@ -1,11 +1,6 @@
 var app_url = "https://climbinggymstats.firebaseio.com/";
 window.app_url = app_url;
-
-//// USERS
-app.factory("UserFactory", function($firebaseObject) {
-  var user = {};
-  return user;
-});
+window.gymUniqueId = 0;
 
 //// USERS
 app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
@@ -13,6 +8,7 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
   var users = $firebaseArray(firebase.child('users'));
 
   var Users = {
+    currentUser: {},
     all: users,
     create: function (user) {
       return users.$add(user);
@@ -40,23 +36,18 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
 });
 
 //// GYM
-app.factory('GymsFactory', function ($firebaseArray, $firebaseObject) {
+app.factory('GymFactory', function ($firebaseObject) {
   var firebase = new Firebase(app_url);
-  var gyms = $firebaseArray(firebase.child('gyms'));
+  // l'id de la gym a changer manuellement pour chaque build
+  var gym = $firebaseObject(firebase.child('gyms').child(window.gymUniqueId));
+  return gym;
+});
 
-  var Gyms = {
-    all: gyms,
-    create: function (gym) {
-      return gyms.$add(gym);
-    },
-    get: function (gymsId) {
-      return $firebaseObject(firebase.child('gyms').child(gymsId));
-    },
-    delete: function (gym) {
-      return gyms.$remove(gym);
-    }
-  };
-  return Gyms;
+//// EVENTS
+app.factory('EventsFactory', function ($firebaseArray) {
+  var firebase = new Firebase(app_url);
+  var events = $firebaseArray(firebase.child('gyms/').child(window.gymUniqueId).child("events/"));
+  return events;
 });
 
 app.factory('GradesFactory', function() {

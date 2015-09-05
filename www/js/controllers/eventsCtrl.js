@@ -1,48 +1,6 @@
-app.controller('eventsCtrl', function($scope, $state, $firebaseArray, GymsFactory, UserFactory) {
+app.controller('eventsCtrl', function($scope, $state, $firebaseArray, EventsFactory) {
 
-  console.log(UserFactory.user);
-
-  // $scope.gyms = GymsFactory.get(UserFactory.user.gym_id);
-
-  // console.log(UserFactory.user);
-
-  // $scope.post = {url: 'http://', 'title': ''};
-  //
-  // $scope.submitPost = function () {
-  //   Post.create($scope.post).then(function () {
-  //     $scope.post = {url: 'http://', 'title': ''};
-  //   });
-  // };
-  //
-  // $scope.deletePost = function (post) {
-  //   Post.delete(post);
-  // };
-
-  //
-  // firebase.child("gyms/0/events").on("value", function(snapshot) {
-  //   $scope.events = snapshot.val();
-  // });
-  //
-  //
-  //
-  // $scope.events = [
-  //   {
-  //     title : "Apéro roc",
-  //     description : "Un petit apéro comme on les aime. Ramener de quoi boire et grignotter",
-  //     date : "Jeudi 17 septembre 21h"
-  //   },
-  //   {
-  //     title : "Apéro roc",
-  //     description : "Un petit apéro comme on les aime. Ramener de quoi boire et grignotter",
-  //     date : "Jeudi 17 septembre 21h"
-  //   },
-  //   {
-  //     title : "Apéro roc",
-  //     description : "Un petit apéro comme on les aime. Ramener de quoi boire et grignotter",
-  //     date : "Jeudi 17 septembre 21h"
-  //   }
-  // ];
-  //
-  // firebase.child("gyms/0/events").set($scope.events);
+  var firebase = new Firebase(app_url);
+  $scope.events = EventsFactory;
 
 });

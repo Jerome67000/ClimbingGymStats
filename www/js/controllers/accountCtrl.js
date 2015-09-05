@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFactory, UserFactory) {
+app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFactory) {
 
   var firebase = new Firebase(window.app_url);
   $scope.user = {};
@@ -18,7 +18,7 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", authData);
-        UserFactory.user = UsersFactory.search(authData.uid);
+        UsersFactory.currentUser = UsersFactory.search(authData.uid);
         $state.go("tab.sessions");
       }
     });
@@ -52,7 +52,7 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
       gym_id: 0,
     };
     UsersFactory.create(user);
-    UserFactory.user = user;
+    UsersFactory.currentUser = user;
   }
 
   function assertValidAccountProps() {
