@@ -34,20 +34,23 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
         if (error) {
           console.log("Error creating user:", error);
         } else {
-          createUserInData(userData.uid);
           console.log("Successfully created user account with uid:", userData.uid);
+          createUserInData(userData.uid);
+          $state.go("tab.sessions");
         }
       });
     }
   };
 
   function createUserInData(uid) {
-    $scope.users.$add({
+    var user = {
       nickname: $scope.user.nickname,
       email: $scope.user.email,
       climb_num: $scope.user.climb_num,
       uid: uid,
-    });
+      gym_id: 0,
+    }
+    UsersFactory.create(user);
   }
 
   function assertValidAccountProps() {
