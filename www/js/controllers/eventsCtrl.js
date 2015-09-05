@@ -1,7 +1,10 @@
-app.controller('eventsCtrl', function($scope, $state, $firebaseArray, GymsFactory) {
+app.controller('eventsCtrl', function($scope, $state, $firebaseArray, GymsFactory, UserFactory) {
 
+  console.log(UserFactory.user);
 
-  $scope.gyms = GymsFactory.get(0);
+  // $scope.gyms = GymsFactory.get(UserFactory.user.gym_id);
+
+  // console.log(UserFactory.user);
 
   // $scope.post = {url: 'http://', 'title': ''};
   //

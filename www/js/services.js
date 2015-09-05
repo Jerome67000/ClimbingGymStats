@@ -2,7 +2,7 @@ var app_url = "https://climbinggymstats.firebaseio.com/";
 window.app_url = app_url;
 
 //// USERS
-app.factory("UserFactory", function() {
+app.factory("UserFactory", function($firebaseObject) {
   var user = {};
   return user;
 });
@@ -19,6 +19,18 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
     },
     get: function (userID) {
       return $firebaseObject(firebase.child('users').child(userID));
+    },
+    search: function (userUid) {
+      var findedUser;
+      users.forEach(function(user) {
+        if (user.uid == userUid) {
+          findedUser = user;
+        }
+      });
+      return findedUser;
+    },
+    update: function (user) {
+      return users.$update(user);
     },
     delete: function (user) {
       return users.$remove(user);
