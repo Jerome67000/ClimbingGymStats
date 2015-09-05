@@ -2,13 +2,12 @@ var app_url = "https://climbinggymstats.firebaseio.com/";
 window.app_url = app_url;
 
 // ///// USERS
-app.factory("Auth", function($firebaseAuth) {
-  var usersRef = new Firebase(app_url+"/users");
-  return $firebaseAuth(usersRef);
+app.factory("UserFactory", function() {
+  var user = {};
+  return user;
 })
 
 app.factory('GradesFactory', function() {
-
   var factory = {
     grades: [
       {
@@ -55,7 +54,6 @@ app.factory('GradesFactory', function() {
       return factory.grades[id];
     },
   };
-
   return factory;
  });
 

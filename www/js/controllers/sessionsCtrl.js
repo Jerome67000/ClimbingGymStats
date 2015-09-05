@@ -13,11 +13,15 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
         {
           text: '<b>Créer</b>',
           type: 'button-positive',
-        },
+          onTap: function() {
+              return true;
+          }
+        }
       ]
-    }).then(function(res) {
-      console.log('Tapped!', res);
-      createNewSession();
+    }).then(function(newSession) {
+      if (newSession) {
+        createNewSession();
+      }
     });
   };
 
@@ -51,22 +55,6 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
-
-
-  // routes : [ {
-  //   id : 0,
-  //   title : "6b+ verticale"
-  //   route_type : "Verticale",
-  //   climb_style : "Moulinette",
-  //   grade : {
-  //     is_plus : true,
-  //     letter : "b",
-  //     num : 6
-  //   },
-  // finished : true,
-  // flash : true,
-  // note : "Belle voie en dièdre",
-  // picture : "http://fefssef.com/pict.png",
 
   $scope.sessions = [
   {
