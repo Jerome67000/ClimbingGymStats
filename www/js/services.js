@@ -34,6 +34,28 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
   };
   return Users;
 });
+//// SESSIONS
+app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
+  var firebase = new Firebase(app_url);
+  var sessions = $firebaseArray(firebase.child('sessions/' + UsersFactory.currentUser.$id));
+
+  var Sessions = {
+    all: sessions,
+    create: function (session) {
+      return sessions.$add(session);
+    },
+    get: function (sessionID) {
+      return $firebaseObject(firebase.child('sessions/-JySed_vXo0sutPsVgv-/').child(sessionID));
+    },
+    update: function (session) {
+      return sessions.$update(session);
+    },
+    delete: function (session) {
+      return sessions.$remove(session);
+    }
+  };
+  return Sessions;
+});
 
 //// GYM
 app.factory('GymFactory', function ($firebaseObject) {

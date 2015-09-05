@@ -70,7 +70,7 @@ app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactor
         $scope.session.validate_count++;
       }
     });
-  }
+  };
 
   $scope.calculScore = function() {
     var best_score = 0;
@@ -80,7 +80,7 @@ app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactor
         $scope.session.best_route = route;
       }
     });
-  }
+  };
 
   $scope.setAverageGrade = function() {
     var totalScore = 0;
@@ -88,8 +88,8 @@ app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactor
       totalScore += route.grade_id;
     });
     var average_grade_id = Math.round(totalScore/$scope.routes.length);
-    $scope.session.average_grad = GradesFactory.getGrade(average_grade_id).title
-  }
+    $scope.session.average_grad = GradesFactory.getGrade(average_grade_id).title;
+  };
 
   $scope.validateCount();
   $scope.calculScore();
