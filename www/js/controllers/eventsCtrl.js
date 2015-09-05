@@ -1,11 +1,25 @@
-app.controller('eventsCtrl', function($scope, $state, $firebaseArray) {
+app.controller('eventsCtrl', function($scope, $state, $firebaseArray, GymsFactory) {
 
-  var firebase = new Firebase(window.app_url);
 
-  firebase.child("gyms/0/events").on("value", function(snapshot) {
-    $scope.events = snapshot.val();  // Alerts "San Francisco"
-  });
+  $scope.gyms = GymsFactory.get(0);
 
+  // $scope.post = {url: 'http://', 'title': ''};
+  //
+  // $scope.submitPost = function () {
+  //   Post.create($scope.post).then(function () {
+  //     $scope.post = {url: 'http://', 'title': ''};
+  //   });
+  // };
+  //
+  // $scope.deletePost = function (post) {
+  //   Post.delete(post);
+  // };
+
+  //
+  // firebase.child("gyms/0/events").on("value", function(snapshot) {
+  //   $scope.events = snapshot.val();
+  // });
+  //
   //
   //
   // $scope.events = [

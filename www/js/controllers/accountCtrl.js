@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $firebaseArray, UserFactory) {
+app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFactory) {
 
   var firebase = new Firebase(window.app_url);
   $scope.user = {};
@@ -18,8 +18,6 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UserFacto
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", authData);
-        UserFactory.user = authData;
-        console.log("use fact", UserFactory.user);
         $state.go("tab.sessions");
       }
     });
