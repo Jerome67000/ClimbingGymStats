@@ -35,6 +35,7 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray,
       function(error, authData) {
         if (error) {
           console.log("Error creating user:", error);
+          $scope.err = error.message;
         } else {
           console.log("Successfully created user account with uid:", authData.uid);
           createUserInData(authData.uid);

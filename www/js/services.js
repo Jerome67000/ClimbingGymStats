@@ -1,6 +1,6 @@
 var app_url = "https://climbinggymstats.firebaseio.com/";
 window.app_url = app_url;
-window.gymUniqueId = 0;
+window.gymUniqueId = "0_roc_en_stock";
 window.userUniqueId = 0;
 
 //// USERS
@@ -12,7 +12,9 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
     currentUser: {},
     all: users,
     create: function (user) {
-      return users.$add(user);
+      email = user.email.toLowerCase().replace(/\./g, '_');
+      var newUserPath = firebase.child('users').child(email);
+      return newUserPath.set(user);
     },
     get: function (userID) {
       return $firebaseObject(firebase.child('users').child(userID));
@@ -59,7 +61,7 @@ app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersF
 });
 
 // GYM
-app.factory('GymFactory', function ($firebaseObject, $timeout) {
+app.factory('GymFactory', function ($firebaseObject) {
   var firebase = new Firebase(app_url);
   var gym = $firebaseObject(firebase.child('gyms').child(window.gymUniqueId));
   var Gym = {

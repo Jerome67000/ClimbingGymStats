@@ -4,28 +4,86 @@
 	"description" : "App to manage clibming gym users with stats and great features",
 	"website" : "www.climbinggymstats.com",
 
+	var gym = 	{
+			"name" : "Roc en stock",
+			"location": "25D Rue du Maréchal Lefebvre",
+			"cp": "67100",
+			"city": "Strasbourg",
+			"title": "Roc en stock",
+			"tel" : "3 88 79 11 70",
+			"email" : "contact@roc-en-stock.fr",
+			"siret" : "414 909 457 00015 ",
+			"created_at": "2015-09-06",
+			"events" : [
+				{
+					"title" : "Apérooo roc",
+					"description" : "Un petit apéro entre grimpeurs comme on les aimes",
+					"picture" : "http://www.ilovegenerator.com/large/i-love-apero-13102107018.png",
+					"date" : "2015-09-06",
+					"time": "21h",
+					"created_at": "2015-09-06T12:46:45.348Z",
+				},
+				{
+					"title" : "Projection film/docu",
+					"description" : "Projection du film/docu 'Un jour j'arrêterai...' de David Hollinger",
+					"picture" : "http://www.escalade-alsace.com/evenements/DVD/Jaquette1jourL.jpg",
+					"date" : "2015-09-06",
+					"time": "20h",
+					"created_at": "2015-09-06T12:46:45.348Z",
+				},
+				{
+					"title" : "Apérooo roc",
+					"description" : "Un petit apéro entre grimpeurs comme on les aimes",
+					"picture" : "http://www.ilovegenerator.com/large/i-love-apero-13102107018.png",
+					"date" : "2015-09-06",
+					"time": "21h",
+					"created_at": "2015-09-06T12:46:45.348Z",
+				}
+			],
+			"manager" : {
+			 "last_name" : "FFF",
+			 "first_name" : "ZZZ",
+			 "email" : "efsefse@gmail.com"
+			}
+		};
+
 	"gyms" : [
 		{
-			"id" : 0,
 			"name" : "Roc en stock",
-			"num" : "03 04 78 54 21",
+			"num" : "03 88 79 11 70",
 			"email" : "efsefse@gmail.com",
 			"siret" : "1515166151561",
-			"created_at": "2015-08-28T12:46:45.348Z",
+			"created_at": "2015-09-06T12:46:40.348Z",
 			"manager" : {
-				"last_name" : "FFF",
-				"first_name" : "ZZZ",
+				"last_name" : "-",
+				"first_name" : "Gislain",
 				"email" : "efsefse@gmail.com"
 			},
 
 			"events" : [
 				{
-					"id" : 0,
-					"title" : "Apérooo",
-					"description" : "Un petit apéro entre grimpeurs",
-					"picture" : "http://fefssef.com/pict.png",
-					"created_at": "2015-08-28T12:46:45.348Z",
-					"updated_at": "2015-08-28T12:46:45.348Z"
+					"title" : "Apérooo roc",
+					"description" : "Un petit apéro entre grimpeurs comme on les aimes",
+					"picture" : "http://www.ilovegenerator.com/large/i-love-apero-13102107018.png",
+					"date" : "2015-09-06",
+					"time": "21h",
+					"created_at": "2015-09-06T12:46:45.348Z",
+				},
+				{
+					"title" : "Projection film/docu",
+					"description" : "Projection du film/docu 'Un jour j'arrêterai...' de David Hollinger",
+					"picture" : "http://www.escalade-alsace.com/evenements/DVD/Jaquette1jourL.jpg",
+					"date" : "2015-09-06",
+					"time": "20h",
+					"created_at": "2015-09-06T12:46:45.348Z",
+				},
+				{
+					"title" : "Apérooo roc",
+					"description" : "Un petit apéro entre grimpeurs comme on les aimes",
+					"picture" : "http://www.ilovegenerator.com/large/i-love-apero-13102107018.png",
+					"date" : "2015-09-06",
+					"time": "21h",
+					"created_at": "2015-09-06T12:46:45.348Z",
 				}
 			]
 		}

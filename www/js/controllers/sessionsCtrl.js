@@ -2,14 +2,10 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
 
   $scope.sessions = SessionsFactory.all;
   $scope.session = {};
-  var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
-  gym.on("value", function(snapshot) {
-    $scope.session.gym = snapshot.val().title;
-  });
 
   var sessions = new Firebase(window.app_url + "sessions/" + window.userUniqueId);
   sessions.on("value", function(snapshot) {
-    $scope.session.title = "Séance #" + snapshot.numChildren() + 1;
+    $scope.session.title = "Séance #" + (snapshot.numChildren() + 1);
   });
 
   $scope.showNewSessionPopup = function() {
@@ -42,8 +38,19 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
       note : $scope.session.note === undefined ? "" : $scope.session.note,
     };
     SessionsFactory.create(session);
+    resetSessionData();
     $scope.openSessionModal();
   }
+
+  function resetSessionData() {
+    var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
+    gym.on("value", function(snapshot) {
+      $scope.session.gym = snapshot.val().title;
+    });
+    $scope.session.note = "";
+  }
+
+  resetSessionData();
 
   // Load the modal from the given template URL
   $ionicModal.fromTemplateUrl('html/modals/session.html',
