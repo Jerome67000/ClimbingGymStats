@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFactory) {
+app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray, UsersFactory) {
 
   var firebase = new Firebase(window.app_url);
   $scope.user = {};
@@ -19,6 +19,7 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
       } else {
         console.log("Authenticated successfully with payload:", authData);
         UsersFactory.currentUser = UsersFactory.search(authData.uid);
+        window.userUniqueId = UsersFactory.currentUser.$id;
         $state.go("tab.sessions");
       }
     });
@@ -37,7 +38,6 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
         } else {
           console.log("Successfully created user account with uid:", authData.uid);
           createUserInData(authData.uid);
-          $state.go("tab.sessions");
         }
       });
     }
@@ -49,10 +49,14 @@ app.controller('accountCtrl', function($scope, $state, $firebaseArray, UsersFact
       email: $scope.user.email,
       climb_num: $scope.user.climb_num,
       uid: uid,
-      gym_id: 0,
+      gym_id: window.gymUniqueId,
     };
-    UsersFactory.create(user);
-    UsersFactory.currentUser = user;
+    var newUser = UsersFactory.create(user);
+    $timeout(function() {
+      UsersFactory.currentUser = UsersFactory.search(uid);
+      window.userUniqueId = UsersFactory.currentUser.$id;
+      $state.go("tab.sessions");
+    }, 1000);
   }
 
   function assertValidAccountProps() {
