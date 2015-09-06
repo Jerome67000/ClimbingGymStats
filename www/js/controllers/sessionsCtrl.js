@@ -37,7 +37,7 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
       location: $scope.session.gym,
       note : $scope.session.note === undefined ? "" : $scope.session.note,
     };
-    SessionsFactory.create(session);
+    var a = SessionsFactory.create(session);
     resetSessionData();
     $scope.openSessionModal();
   }

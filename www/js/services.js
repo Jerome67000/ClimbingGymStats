@@ -60,6 +60,29 @@ app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersF
   return Sessions;
 });
 
+//// ROUTES
+app.factory('RoutesFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
+  var firebase = new Firebase(app_url);
+  var routes = $firebaseArray(firebase.child('sessions/' + window.userUniqueId + "/routes/0"));
+
+  var Routes = {
+    all: routes,
+    create: function (route) {
+      return routes.$add(route);
+    },
+    get: function (routeUID) {
+      return $firebaseObject(firebase.child('sessions/' + UsersFactory.currentUser.$id).child(routeUID));
+    },
+    update: function (route) {
+      return routes.$update(route);
+    },
+    delete: function (route) {
+      return routes.$remove(route);
+    }
+  };
+  return Routes;
+});
+
 // GYM
 app.factory('GymFactory', function ($firebaseObject) {
   var firebase = new Firebase(app_url);
