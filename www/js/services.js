@@ -38,7 +38,6 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
 //// SESSIONS
 app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
   var firebase = new Firebase(app_url);
-  // var sessions = $firebaseArray(firebase.child('sessions/' + UsersFactory.currentUser.$id));
   var sessions = $firebaseArray(firebase.child('sessions/' + window.userUniqueId));
 
   var Sessions = {
@@ -59,20 +58,18 @@ app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersF
   return Sessions;
 });
 
-//// GYM
-// app.factory('GymFactory', function ($firebaseObject) {
-//   var firebase = new Firebase(app_url);
-//   // l'id de la gym a changer manuellement pour chaque build
-//   var gym = $firebaseObject(firebase.child('gyms').child(window.gymUniqueId));
-//
-//   var Gym = {
-//     currentGym: gym,
-//     pushNewUser: function (user) {
-//       return $firebaseObject(firebase.child('gyms').child(window.gymUniqueId).child("users")).$add(user);
-//     },
-//   };
-//   return Gym;
-// });
+// GYM
+app.factory('GymFactory', function ($firebaseObject, $timeout) {
+  var firebase = new Firebase(app_url);
+  var gym = $firebaseObject(firebase.child('gyms').child(window.gymUniqueId));
+  var Gym = {
+    currentGym: gym,
+    pushNewUser: function (user) {
+      return $firebaseObject(firebase.child('gyms').child(window.gymUniqueId).child("users")).$add(user);
+    },
+  };
+  return Gym;
+});
 
 //// EVENTS
 app.factory('EventsFactory', function ($firebaseArray) {
