@@ -1,41 +1,41 @@
 app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactory) {
 
-  $scope.routes = {};
-  $scope.session.routes_count = $scope.routes.length;
-
-  $scope.showNewRoutePopup = function() {
-    $ionicPopup.show({
-      templateUrl: 'html/partials/new-route.html',
-      title: 'Nouvelle voie',
-      scope: $scope,
-      buttons: [
-        { text: 'Annuler' },
-        {
-          text: '<b>Créer</b>',
-          type: 'button-positive',
-          onTap: function() {
-              return true;
-          }
-        }
-      ]
-    }).then(function(newRoute) {
-      if (newRoute) {
-        createNewRoute();
-      }
-    });
-  };
-
-  function createNewSession() {
-    var route = {
-      title : $scope.route.title,
-      created_at : Firebase.ServerValue.TIMESTAMP,
-      location: $scope.route.gym,
-      note : $scope.route.note === undefined ? "" : $scope.route.note,
-    };
-    SessionsFactory.create(session);
-    resetSessionData();
-    $scope.openSessionModal();
-  }
+  // $scope.routes = {};
+  // $scope.session.routes_count = $scope.routes.length;
+  //
+  // $scope.showNewRoutePopup = function() {
+  //   $ionicPopup.show({
+  //     templateUrl: 'html/partials/new-route.html',
+  //     title: 'Nouvelle voie',
+  //     scope: $scope,
+  //     buttons: [
+  //       { text: 'Annuler' },
+  //       {
+  //         text: '<b>Créer</b>',
+  //         type: 'button-positive',
+  //         onTap: function() {
+  //             return true;
+  //         }
+  //       }
+  //     ]
+  //   }).then(function(newRoute) {
+  //     if (newRoute) {
+  //       createNewRoute();
+  //     }
+  //   });
+  // };
+  //
+  // function createNewSession() {
+  //   var route = {
+  //     title : $scope.route.title,
+  //     created_at : Firebase.ServerValue.TIMESTAMP,
+  //     location: $scope.route.gym,
+  //     note : $scope.route.note === undefined ? "" : $scope.route.note,
+  //   };
+  //   SessionsFactory.create(session);
+  //   resetSessionData();
+  //   $scope.openSessionModal();
+  // }
   //
   // function resetSessionData() {
   //   var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
@@ -76,4 +76,28 @@ app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactor
   // $scope.validateCount();
   // $scope.calculScore();
   // $scope.setAverageGrade();
+
+
+
+    // $scope.sessions = [
+    // {
+    //   "created_at" : "2015-08-28",
+    //   "id" : 0,
+    //   "note" : "Très bonne séance",
+    //   "routes" : [ {
+    //     "climb_style" : "Moulinette",
+    //     "finished" : true,
+    //     "flash" : true,
+    //     "grade" : {
+    //       "is_plus" : true,
+    //       "letter" : "b",
+    //       "num" : 6
+    //     },
+    //     "id" : 0,
+    //     "note" : "Belle voie en dièdre",
+    //     "picture" : "http://fefssef.com/pict.png",
+    //     "route_type" : "Verticale",
+    //     "title" : "6b+ verticale"
+    //   } ],
+    // }];
 });

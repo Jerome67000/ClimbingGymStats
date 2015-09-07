@@ -1,8 +1,8 @@
-%ion-tabs.tabs-color-active-positive
+%ion-tabs.tabs-color-active-positive.tabs-item-hide(ng-controller="tabsCtrl")
   / TABS
-  %ion-tab(title ="Seance" ui-sref="tab.sessions")
+  %ion-tab(title ="Seance" ui-sref="tab.sessions({user_id: user_id})")
     %ion-nav-view(name="Seance")
-  %ion-tab(title="Stats" ui-sref="tab.stats")
+  %ion-tab(title="Stats" ui-sref="tab.stats({user_id: user_id})")
     %ion-nav-view(name="Stats")
-  %ion-tab(title="Events" ui-sref="tab.events")
+  %ion-tab(title="Events" ui-sref="tab.events({gym_id: gym_id})")
     %ion-nav-view(name="Events")

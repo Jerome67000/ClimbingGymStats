@@ -20,7 +20,7 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray,
         console.log("Authenticated successfully with payload:", authData);
         UsersFactory.currentUser = UsersFactory.search(authData.uid);
         window.userUniqueId = UsersFactory.currentUser.$id;
-        $state.go("tab.sessions");
+        $state.go('tab.sessions', {user_id: window.userUniqueId});
       }
     });
   };

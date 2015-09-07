@@ -77,11 +77,6 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
       url: '/create-acc',
       templateUrl: 'html/pages/create-acc.html'
   })
-  //
-  // .state('create-account', {
-  //     url: '/create-account',
-  //     templateUrl: 'partials/page-create-account.html'
-  // })
 
   // TABS
     .state('tab', {
@@ -91,16 +86,26 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
   })
 
   .state('tab.sessions', {
-    url: '/sessions',
+    url: '/sessions/:user_id',
     views: {
       'Seance': {
         templateUrl: 'html/tabs/tab-sessions.html'
       }
     }
   })
+
+  .state('tab.session', {
+    url: '/session/:session_id',
+    views: {
+      'Seance': {
+        templateUrl: 'html/pages/session.html'
+      }
+    }
+  })
+
   // Each tab has its own nav history stack:
   .state('tab.stats', {
-    url: '/stats',
+    url: '/stats/:user_id',
     views: {
       'Stats': {
         templateUrl: 'html/tabs/tab-stats.html'
@@ -109,13 +114,18 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
   })
   // Each tab has its own nav history stack:
   .state('tab.events', {
-    url: '/events',
+    url: '/events/:gym_id',
     views: {
       'Events': {
         templateUrl: 'html/tabs/tab-events.html'
       }
     }
-  })
+  });
+
+  // .state('session-detail', {
+  //     url: '/session-detail/:session_id',
+  //     templateUrl: 'html/pages/session.html'
+  // });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/signin');
