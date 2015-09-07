@@ -9,6 +9,10 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="*.firebaseio.com"/>
+  <access origin="auth.firebase.com"/>
+  <allow-navigation href="*.firebaseio.com" />
+  <allow-navigation href="auth.firebase.com" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -18,6 +22,9 @@
   <preference name="SplashScreenDelay" value="3000"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <feature name="InAppBrowser">
+    <param name="ios-package" value="CDVInAppBrowser" />
   </feature>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>

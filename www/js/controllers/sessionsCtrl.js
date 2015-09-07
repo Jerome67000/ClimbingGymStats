@@ -10,7 +10,7 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
 
   $scope.showNewSessionPopup = function() {
     $ionicPopup.show({
-      templateUrl: 'html/partials/new-session.html',
+      templateUrl: 'html/popups/new-session.html',
       title: 'Nouvelle séance',
       scope: $scope,
       buttons: [
