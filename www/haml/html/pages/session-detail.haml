@@ -12,5 +12,5 @@
     .list.padding
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
         %i.icon.ion-android-checkbox-blank
-        {{route.grade_title + " " + route.route_type}}
+        {{route.title + " " + route.gym}}
         %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.validate}")

@@ -8,6 +8,10 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
     $scope.session.title = "Séance #" + (snapshot.numChildren() + 1);
   });
 
+  $scope.test = function(session) {
+    console.log(session);
+  };
+
   $scope.showNewSessionPopup = function() {
     $ionicPopup.show({
       templateUrl: 'html/popups/new-session.html',
@@ -37,10 +41,8 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
       location: $scope.session.gym,
       note : $scope.session.note === undefined ? "" : $scope.session.note,
     };
-    var a = SessionsFactory.create(session);
+    var uniqueID = SessionsFactory.create(session);
     resetSessionData();
-    // $scope.openSessionModal();
-    $state.go('tab.session');
   }
 
   function resetSessionData() {

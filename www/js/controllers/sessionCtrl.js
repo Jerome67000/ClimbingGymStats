@@ -1,49 +1,54 @@
-app.controller('sessionCtrl', function($scope, $state, $ionicPopup, GradesFactory) {
+app.controller('sessionCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory) {
 
-  // $scope.routes = {};
+  console.log("session_id", $stateParams.session_id);
+
+  var firebase = new Firebase(app_url);
+  $scope.routes = $firebaseArray(firebase.child('sessions/').child( window.userUniqueId).child($stateParams.session_id).child("routes"));
+  $scope.route = {};
+
+  console.log($scope.routes);
+
   // $scope.session.routes_count = $scope.routes.length;
-  //
-  // $scope.showNewRoutePopup = function() {
-  //   $ionicPopup.show({
-  //     templateUrl: 'html/partials/new-route.html',
-  //     title: 'Nouvelle voie',
-  //     scope: $scope,
-  //     buttons: [
-  //       { text: 'Annuler' },
-  //       {
-  //         text: '<b>Créer</b>',
-  //         type: 'button-positive',
-  //         onTap: function() {
-  //             return true;
-  //         }
-  //       }
-  //     ]
-  //   }).then(function(newRoute) {
-  //     if (newRoute) {
-  //       createNewRoute();
-  //     }
-  //   });
-  // };
-  //
-  // function createNewSession() {
-  //   var route = {
-  //     title : $scope.route.title,
-  //     created_at : Firebase.ServerValue.TIMESTAMP,
-  //     location: $scope.route.gym,
-  //     note : $scope.route.note === undefined ? "" : $scope.route.note,
-  //   };
-  //   SessionsFactory.create(session);
-  //   resetSessionData();
-  //   $scope.openSessionModal();
-  // }
-  //
-  // function resetSessionData() {
-  //   var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
-  //   gym.on("value", function(snapshot) {
-  //     $scope.session.gym = snapshot.val().title;
-  //   });
-  //   $scope.session.note = "";
-  // }
+
+  $scope.showNewRoutePopup = function() {
+    $ionicPopup.show({
+      templateUrl: 'html/popups/new-route.html',
+      title: 'Nouvelle voie',
+      scope: $scope,
+      buttons: [
+        { text: 'Annuler' },
+        {
+          text: '<b>Créer</b>',
+          type: 'button-positive',
+          onTap: function() {
+              return true;
+          }
+        }
+      ]
+    }).then(function(newRoute) {
+      if (newRoute) {
+        createNewRoute();
+      }
+    });
+  };
+
+  function createNewRoute() {
+    var route = {
+      title : $scope.route.title,
+      location: $scope.route.gym,
+      note : $scope.route.note === undefined ? "" : $scope.route.note,
+    };
+    $scope.routes.$add(route);
+    // resetRouteData();
+  }
+
+  function resetRouteData() {
+    var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
+    gym.on("value", function(snapshot) {
+      $scope.session.gym = snapshot.val().title;
+    });
+    $scope.session.note = "";
+  }
   //
   // $scope.validateCount = function() {
   //   $scope.session.validate_count = 0;

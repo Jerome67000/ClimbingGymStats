@@ -58,9 +58,8 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
   $ionicConfigProvider.tabs.position('top');
   // $ionicConfigProvider.backButton.previousTitleText(false).text(' ');
   // $ionicConfigProvider.backButton.icon('ion-android-arrow-back');
-  //
-  if (ionic.Platform.isAndroid())
-    $ionicConfigProvider.scrolling.jsScrolling(false);
+  // if (ionic.Platform.isAndroid())
+  //   $ionicConfigProvider.scrolling.jsScrolling(false);
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -86,7 +85,7 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
   })
 
   .state('tab.sessions', {
-    url: '/sessions/:user_id',
+    url: '/:user_id/sessions',
     views: {
       'Seance': {
         templateUrl: 'html/tabs/tab-sessions.html'
@@ -94,38 +93,32 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase']
     }
   })
 
-  .state('tab.session', {
-    url: '/session/:session_id',
+  .state('tab.session-detail', {
+    url: '/sessions/:session_id',
     views: {
       'Seance': {
-        templateUrl: 'html/pages/session.html'
+        templateUrl: 'html/pages/session-detail.html'
       }
     }
   })
 
-  // Each tab has its own nav history stack:
   .state('tab.stats', {
-    url: '/stats/:user_id',
+    url: '/:user_id/stats',
     views: {
       'Stats': {
         templateUrl: 'html/tabs/tab-stats.html'
       }
     }
   })
-  // Each tab has its own nav history stack:
+
   .state('tab.events', {
-    url: '/events/:gym_id',
+    url: '/:gym_id/events',
     views: {
       'Events': {
         templateUrl: 'html/tabs/tab-events.html'
       }
     }
   });
-
-  // .state('session-detail', {
-  //     url: '/session-detail/:session_id',
-  //     templateUrl: 'html/pages/session.html'
-  // });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/signin');

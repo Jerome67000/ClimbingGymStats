@@ -38,14 +38,16 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
   return Users;
 });
 //// SESSIONS
-app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
+app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, $state, UsersFactory) {
   var firebase = new Firebase(app_url);
   var sessions = $firebaseArray(firebase.child('sessions/' + window.userUniqueId));
 
   var Sessions = {
     all: sessions,
     create: function (session) {
-      return sessions.$add(session);
+      return sessions.$add(session).then(function(ref) {
+        $state.go('tab.session-detail', {session_id: ref.key()});
+      });
     },
     get: function (sessionID) {
       return $firebaseObject(firebase.child('sessions/' + UsersFactory.currentUser.$id).child(sessionID));
