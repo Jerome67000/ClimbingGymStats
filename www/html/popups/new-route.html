@@ -1,14 +1,9 @@
 <div class='list'>
-  <label class='item item-input item-stacked-label'>
-    <span class='input-label'>Nom voie</span>
-    <input ng-model='route.title' placeholder='Nom séance' type='text'>
-  </label>
-  <label class='item item-input item-stacked-label'>
-    <span class='input-label'>Salle d'escalade</span>
-    <input ng-model='route.gym' placeholder="Salle d'escalade" type='text'>
-  </label>
+  <ion-toggle ng-model='route.flash' toggle-class='toggle-calm'>Flash</ion-toggle>
+  <ion-toggle ng-model='route.finished' toggle-class='toggle-calm'>Finished</ion-toggle>
   <label class='item item-input item-stacked-label'>
     <span class='input-label'>Notes</span>
     <input ng-model='route.note' type='text'>
   </label>
+  <button class='button button-icon icon ion-image' ng-click='showPopover()'></button>
 </div>

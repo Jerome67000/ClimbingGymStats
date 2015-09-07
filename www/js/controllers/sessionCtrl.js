@@ -34,22 +34,28 @@ app.controller('sessionCtrl', function($scope, $state, $stateParams, $ionicPopup
 
   function createNewRoute() {
     var route = {
-      title : $scope.route.title,
-      location: $scope.route.gym,
+      title : $scope.route.grade.title + " " + $scope.route.route_type,
+      created_at: Firebase.ServerValue.TIMESTAMP,
+      climb_style : $scope.route.climb_style,
+      route_type : $scope.route.route_type,
+      finished : $scope.route.finished,
+      flash : $scope.route.flash,
+      grade : GradesFactory.get(5),
       note : $scope.route.note === undefined ? "" : $scope.route.note,
+      picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
     $scope.routes.$add(route);
     // resetRouteData();
   }
 
-  function resetRouteData() {
-    var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
-    gym.on("value", function(snapshot) {
-      $scope.session.gym = snapshot.val().title;
-    });
-    $scope.session.note = "";
-  }
-  //
+  // function resetRouteData() {
+  //   var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
+  //   gym.on("value", function(snapshot) {
+  //     $scope.session.gym = snapshot.val().title;
+  //   });
+  //   $scope.session.note = "";
+  // }
+
   // $scope.validateCount = function() {
   //   $scope.session.validate_count = 0;
   //   $scope.routes.forEach(function(route) {
@@ -83,26 +89,4 @@ app.controller('sessionCtrl', function($scope, $state, $stateParams, $ionicPopup
   // $scope.setAverageGrade();
 
 
-
-    // $scope.sessions = [
-    // {
-    //   "created_at" : "2015-08-28",
-    //   "id" : 0,
-    //   "note" : "Très bonne séance",
-    //   "routes" : [ {
-    //     "climb_style" : "Moulinette",
-    //     "finished" : true,
-    //     "flash" : true,
-    //     "grade" : {
-    //       "is_plus" : true,
-    //       "letter" : "b",
-    //       "num" : 6
-    //     },
-    //     "id" : 0,
-    //     "note" : "Belle voie en dièdre",
-    //     "picture" : "http://fefssef.com/pict.png",
-    //     "route_type" : "Verticale",
-    //     "title" : "6b+ verticale"
-    //   } ],
-    // }];
 });

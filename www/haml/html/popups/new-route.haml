@@ -1,10 +1,7 @@
 .list
-  %label.item.item-input.item-stacked-label
-    %span.input-label Nom voie
-    %input(type="text" placeholder="Nom séance" ng-model="route.title")
-  %label.item.item-input.item-stacked-label
-    %span.input-label Salle d'escalade
-    %input(type="text" placeholder="Salle d'escalade" ng-model="route.gym")
+  %ion-toggle(ng-model="route.flash" toggle-class="toggle-calm") Flash
+  %ion-toggle(ng-model="route.finished" toggle-class="toggle-calm") Finished
   %label.item.item-input.item-stacked-label
     %span.input-label Notes
     %input(type="text" ng-model="route.note")
+  %button.button.button-icon.icon.ion-image(ng-click="showPopover()")

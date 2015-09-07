@@ -106,51 +106,36 @@ app.factory('EventsFactory', function ($firebaseArray) {
 });
 
 app.factory('GradesFactory', function() {
-  var factory = {
-    grades: [
-      {
-        title: "5a",
-        num: 5,
-        letter: "a",
-        plus: false,
+
+  var Grades = {};
+
+  function generateGrades() {
+    var grades_array = [];
+    var num = 3;
+    while (num < 10) {
+      var letter = 97;
+      while (letter < 100) {
+        var g = {
+          num : num,
+          letter: String.fromCharCode(letter),
+          title: num + String.fromCharCode(letter),
+        };
+        grades_array.push(g);
+        console.log("added :", g);
+      letter++;
+      }
+      num++;
+    }
+    Grades = {
+      grades: grades_array,
+      getGrades: function() {
+        return factory.grades_array;
       },
-      {
-        title: "5a+",
-        num: 5,
-        letter: "a",
-        plus: true,
+      getGrade: function(id) {
+        return factory.grades_array[id];
       },
-      {
-        title: "5b",
-        num: 5,
-        letter: "b",
-        plus: false,
-      },
-      {
-        title: "5b+",
-        num: 5,
-        letter: "b",
-        plus: true,
-      },
-      {
-        title: "5c",
-        num: 5,
-        letter: "c",
-        plus: false,
-      },
-      {
-        title: "5c+",
-        num: 5,
-        letter: "c",
-        plus: true,
-      },
-    ],
-    getGrades: function() {
-      return factory.grades;
-    },
-    getGrade: function(id) {
-      return factory.grades[id];
-    },
-  };
-  return factory;
+    };
+  }
+  generateGrades();
+  return Grades;
  });

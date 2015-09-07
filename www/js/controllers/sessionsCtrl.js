@@ -41,7 +41,7 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
       location: $scope.session.gym,
       note : $scope.session.note === undefined ? "" : $scope.session.note,
     };
-    var uniqueID = SessionsFactory.create(session);
+    SessionsFactory.create(session);
     resetSessionData();
   }
 
