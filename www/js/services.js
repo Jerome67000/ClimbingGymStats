@@ -142,7 +142,7 @@ app.factory('GradesFactory', function() {
   var types = ["Dalle", "Verticale", "Léger dévers", "Gros dévers", "Toit", "Bloc"];
   var RouteTypes = {
     all: types,
-    getFromId: function (id) {
+    getTypeFromId: function (id) {
       return types[id];
     }
   };

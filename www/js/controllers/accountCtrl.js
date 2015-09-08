@@ -19,6 +19,7 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $ionicLoading, 
       if (error) {
         console.log("Login Failed!", error);
         $scope.err = error.message;
+        $ionicLoading.hide();
       } else {
         console.log("Authenticated successfully with payload:", authData);
         UsersFactory.currentUser = UsersFactory.search(authData.uid);
@@ -41,6 +42,7 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $ionicLoading, 
         if (error) {
           console.log("Error creating user:", error);
           $scope.err = error.message;
+          $ionicLoading.hide();
         } else {
           console.log("Successfully created user account with uid:", authData.uid);
           createUserInData(authData.uid);

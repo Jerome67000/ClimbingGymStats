@@ -35,12 +35,12 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
 
   function createNewRoute() {
     var newRoute = {
-      title : GradesFactory.getGrade($scope.route.grade_id).title + " " + $scope.route.route_type,
+      title : GradesFactory.getGradeFromId($scope.route.grade_id).title + " " + $scope.route.route_type,
       // climb_style : $scope.route.climb_style,
       route_type : $scope.route.route_type,
       finished : $scope.route.finished,
       flash : $scope.route.flash,
-      grade : GradesFactory.getGrade($scope.route.grade_id),
+      grade : GradesFactory.getGradeFromId($scope.route.grade_id),
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
