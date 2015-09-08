@@ -1,10 +1,13 @@
-app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory) {
-
-  console.log("session_id", $stateParams.session_id);
+app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory, RouteTypesFactory, ClimbStylesFactory) {
 
   var firebase = new Firebase(app_url);
   $scope.routes = $firebaseArray(firebase.child('sessions/').child( window.userUniqueId).child($stateParams.session_id).child("routes"));
   $scope.route = {};
+
+  $scope.route.grade_id = 15;
+  $scope.route.route_type = "dévers";
+  $scope.route.finished = true;
+  $scope.route.flash = true;
 
   // $scope.session.routes_count = $scope.routes.length;
 
@@ -32,13 +35,12 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
 
   function createNewRoute() {
     var newRoute = {
-      // title : $scope.route.grade.title + " " + $scope.route.route_type,
-      created_at: Firebase.ServerValue.TIMESTAMP,
+      title : GradesFactory.getGrade($scope.route.grade_id).title + " " + $scope.route.route_type,
       // climb_style : $scope.route.climb_style,
-      // route_type : $scope.route.route_type,
+      route_type : $scope.route.route_type,
       finished : $scope.route.finished,
       flash : $scope.route.flash,
-      grade : GradesFactory.getGrade(5),
+      grade : GradesFactory.getGrade($scope.route.grade_id),
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };

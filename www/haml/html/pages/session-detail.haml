@@ -1,4 +1,4 @@
-%ion-view(title="Séance #" ng-controller="sessionCtrl")
+%ion-view(title="Séance #" ng-controller="sessionDetailCtrl")
   %ion-header-bar.bar-positive
     %h1.title Séance : {{session.title}}
   %ion-content.padding.session
@@ -12,5 +12,5 @@
     .list.padding
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
         %i.icon.ion-android-checkbox-blank
-        {{route.title + " " + route.gym}}
+        {{route.title}}
         %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.validate}")

@@ -63,27 +63,27 @@ app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, $state
 });
 
 //// ROUTES
-app.factory('RoutesFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
-  var firebase = new Firebase(app_url);
-  var routes = $firebaseArray(firebase.child('sessions/' + window.userUniqueId + "/routes/0"));
-
-  var Routes = {
-    all: routes,
-    create: function (route) {
-      return routes.$add(route);
-    },
-    get: function (routeUID) {
-      return $firebaseObject(firebase.child('sessions/' + UsersFactory.currentUser.$id).child(routeUID));
-    },
-    update: function (route) {
-      return routes.$update(route);
-    },
-    delete: function (route) {
-      return routes.$remove(route);
-    }
-  };
-  return Routes;
-});
+// app.factory('RoutesFactory', function ($firebaseArray, $firebaseObject, UsersFactory) {
+//   var firebase = new Firebase(app_url);
+//   var routes = $firebaseArray(firebase.child('sessions/' + window.userUniqueId + "/routes/0"));
+//
+//   var Routes = {
+//     all: routes,
+//     create: function (route) {
+//       return routes.$add(route);
+//     },
+//     get: function (routeUID) {
+//       return $firebaseObject(firebase.child('sessions/' + UsersFactory.currentUser.$id).child(routeUID));
+//     },
+//     update: function (route) {
+//       return routes.$update(route);
+//     },
+//     delete: function (route) {
+//       return routes.$remove(route);
+//     }
+//   };
+//   return Routes;
+// });
 
 // GYM
 app.factory('GymFactory', function ($firebaseObject) {
@@ -128,11 +128,35 @@ app.factory('GradesFactory', function() {
     }
     Grades = {
       grades: grades_array,
-      getGrade: function(id) {
+      getGradeFromId: function(id) {
         return grades_array[id];
       },
     };
   }
   generateGrades();
   return Grades;
+ });
+
+ //// ROUTE TYPE
+ app.factory('RouteTypesFactory', function () {
+  var types = ["Dalle", "Verticale", "Léger dévers", "Gros dévers", "Toit", "Bloc"];
+  var RouteTypes = {
+    all: types,
+    getFromId: function (id) {
+      return types[id];
+    }
+  };
+  return RouteTypes;
+ });
+
+ //// Climb Style
+ app.factory('ClimbStylesFactory', function () {
+  var styles = ["En tête", "Moulinette", "Solo"];
+  var ClimbStyles = {
+    all: styles,
+    getStyleFromId: function (id) {
+      return styles[id];
+    }
+  };
+  return ClimbStyles;
  });

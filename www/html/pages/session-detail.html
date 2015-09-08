@@ -1,4 +1,4 @@
-<ion-view ng-controller='sessionCtrl' title='Séance #'>
+<ion-view ng-controller='sessionDetailCtrl' title='Séance #'>
   <ion-header-bar class='bar-positive'>
     <h1 class='title'>Séance : {{session.title}}</h1>
   </ion-header-bar>
@@ -12,7 +12,7 @@
     <div class='list padding'>
       <a class='item item-icon-left item-icon-right' ng-repeat='route in routes'>
         <i class='icon ion-android-checkbox-blank'></i>
-        {{route.title + " " + route.gym}}
+        {{route.title}}
         <i class='icon route-validate' ng-class="{ 'ion-android-checkmark-circle': route.validate}"></i>
       </a>
     </div>
