@@ -105,6 +105,7 @@ app.factory('EventsFactory', function ($firebaseArray) {
   return events;
 });
 
+//// GRADES
 app.factory('GradesFactory', function() {
 
   var Grades = {};
@@ -121,18 +122,14 @@ app.factory('GradesFactory', function() {
           title: num + String.fromCharCode(letter),
         };
         grades_array.push(g);
-        console.log("added :", g);
-      letter++;
+        letter++;
       }
       num++;
     }
     Grades = {
       grades: grades_array,
-      getGrades: function() {
-        return factory.grades_array;
-      },
       getGrade: function(id) {
-        return factory.grades_array[id];
+        return grades_array[id];
       },
     };
   }

@@ -1,12 +1,10 @@
-app.controller('sessionCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory) {
+app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory) {
 
   console.log("session_id", $stateParams.session_id);
 
   var firebase = new Firebase(app_url);
   $scope.routes = $firebaseArray(firebase.child('sessions/').child( window.userUniqueId).child($stateParams.session_id).child("routes"));
   $scope.route = {};
-
-  console.log($scope.routes);
 
   // $scope.session.routes_count = $scope.routes.length;
 
@@ -33,18 +31,18 @@ app.controller('sessionCtrl', function($scope, $state, $stateParams, $ionicPopup
   };
 
   function createNewRoute() {
-    var route = {
-      title : $scope.route.grade.title + " " + $scope.route.route_type,
+    var newRoute = {
+      // title : $scope.route.grade.title + " " + $scope.route.route_type,
       created_at: Firebase.ServerValue.TIMESTAMP,
-      climb_style : $scope.route.climb_style,
-      route_type : $scope.route.route_type,
+      // climb_style : $scope.route.climb_style,
+      // route_type : $scope.route.route_type,
       finished : $scope.route.finished,
       flash : $scope.route.flash,
-      grade : GradesFactory.get(5),
+      grade : GradesFactory.getGrade(5),
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
-    $scope.routes.$add(route);
+    $scope.routes.$add(newRoute);
     // resetRouteData();
   }
 
