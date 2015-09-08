@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray, UsersFactory) {
+app.controller('accountCtrl', function($scope, $state, $timeout, $ionicLoading, $firebaseArray, UsersFactory, GradesFactory) {
 
   var firebase = new Firebase(window.app_url);
   $scope.user = {};
@@ -9,6 +9,8 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray,
   $scope.user.climb_id = null;
 
   $scope.login = function() {
+    $ionicLoading.show();
+    $scope.err = null;
     firebase.authWithPassword({
         email    : $scope.user.email,
         password : $scope.user.password
@@ -16,16 +18,19 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray,
     function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
+        $scope.err = error.message;
       } else {
         console.log("Authenticated successfully with payload:", authData);
         UsersFactory.currentUser = UsersFactory.search(authData.uid);
         window.userUniqueId = UsersFactory.currentUser.$id;
+        $ionicLoading.hide();
         $state.go('tab.sessions', {user_id: window.userUniqueId});
       }
     });
   };
 
   $scope.createAccount = function() {
+    $ionicLoading.show();
     $scope.err = null;
     if (assertValidAccountProps()) {
       firebase.createUser({
@@ -56,6 +61,7 @@ app.controller('accountCtrl', function($scope, $state, $timeout, $firebaseArray,
     $timeout(function() {
       UsersFactory.currentUser = UsersFactory.search(uid);
       window.userUniqueId = UsersFactory.currentUser.$id;
+      $ionicLoading.hide();
       $state.go("tab.sessions");
     }, 1000);
   }

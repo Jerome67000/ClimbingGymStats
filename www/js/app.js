@@ -5,6 +5,10 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase'])
 
+  .constant('$ionicLoadingConfig', {
+    template: '<ion-spinner></ion-spinner> <br> Chargement...'
+  })
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
