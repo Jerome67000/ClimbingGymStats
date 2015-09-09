@@ -1,9 +1,8 @@
 %ion-view(view-title="Climbing Gym Stats" ng-controller="eventsCtrl")
   %ion-content.padding
-    .card(ng-repeat="event in events")
-      .item.item-divider
-        {{event.title}}
-      .item.item-text-wrap
-        {{event.description}}
-      .item.item-divider
-        {{event.date}}
+    .list
+      %a.item.item-thumbnail-left(ng-repeat="event in events")
+        %img(ng-src="{{event.picture}}")
+        %h2 {{event.title}}
+        %p {{event.description}}
+        %p {{event.date}}
