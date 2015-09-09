@@ -1,5 +1,6 @@
-<ion-view view-title='Climbing Gym Stats'>
+<ion-view ng-controller='statsCtrl' view-title='Climbing Gym Stats'>
   <ion-content class='padding'>
     Stats
+    <canvas chart-click='onClick' chart-data='data' chart-labels='labels' chart-legend='true' chart-series='series' class='chart chart-line' id='line'></canvas>
   </ion-content>
 </ion-view>

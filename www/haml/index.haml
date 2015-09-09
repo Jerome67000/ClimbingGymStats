@@ -15,10 +15,14 @@
     / cordova script (this will be a 404 during development)
     %script(src="cordova.js")
 
-    / Firebase
+    / librairies
     %script(src="js/libs/firebase.js")
-    / AngularFire
     %script(src="js/libs/angularfire.min.js")
+    %script(src="js/libs/moment.js")
+    %script(src="js/libs/momentjs_fr_locales.js")
+    %script(src="js/libs/Chart.js")
+    %script(src="js/libs/angular-chart.js/dist/angular-chart.js")
+    %link(href="js/libs/angular-chart.js/dist/angular-chart.css" rel="stylesheet")
 
     / your app's js
     %script(src="js/app.js")
@@ -29,14 +33,12 @@
     %script(src="js/controllers/tabsCtrl.js")
     %script(src="js/controllers/sessionsCtrl.js")
     %script(src="js/controllers/sessionDetailCtrl.js")
+    %script(src="js/controllers/statsCtrl.js")
     %script(src="js/controllers/eventsCtrl.js")
     %script(src="js/controllers/photoCtrl.js")
 
     / directive
 
-    / librairies
-    %script(src="js/libs/moment.js")
-    %script(src="js/libs/momentjs_fr_locales.js")
 
   %body(ng-app="app")
     %ion-nav-bar.bar-positive
