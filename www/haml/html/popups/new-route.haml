@@ -1,9 +1,13 @@
-.grades
-  %h1 Test
-%ion-toggle(ng-model="route.flash" toggle-class="toggle-calm") Flash
-%ion-toggle(ng-model="route.finished" toggle-class="toggle-calm") Finished
-%ion-toggle(ng-model="route.toprope" toggle-class="toggle-calm") En tête
-%label.item.item-input.item-stacked-label
-  %span.input-label Notes
-  %input(type="text" ng-model="route.note")
-%button.button.button-icon.icon.ion-image(ng-click="showPopover()")
+.new-route-popup
+  .grades.padding
+    %h3 {{route.grade.title}}
+    %button.button.icon.ion-plus(ng-click="nextGrade()")
+    %button.button.icon.ion-minus(ng-click="previousGrade()")
+  %ion-toggle(ng-model="route.flash" toggle-class="toggle-calm") Flash
+  %ion-toggle(ng-model="route.finished" toggle-class="toggle-calm") Finished
+  %ion-toggle(ng-model="route.toprope" toggle-class="toggle-calm") En tête
+
+  %label.item.item-input.item-stacked-label
+    %span.input-label Notes
+    %input(type="text" ng-model="route.note")
+  %button.button.button-icon.icon.ion-image(ng-click="showPopover()")

@@ -136,7 +136,7 @@ app.factory('GradesFactory', function() {
       num++;
     }
     Grades = {
-      grades: grades_array,
+      all: grades_array,
       getGradeFromId: function(id) {
         return grades_array[id];
       },

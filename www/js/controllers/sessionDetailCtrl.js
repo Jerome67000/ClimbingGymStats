@@ -2,14 +2,41 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
 
   var firebase = new Firebase(app_url);
   $scope.routes = $firebaseArray(firebase.child('sessions/').child( window.userUniqueId).child($stateParams.session_id).child("routes"));
-  $scope.route = {};
 
-  $scope.route.grade_id = 15;
-  $scope.route.route_type = "dévers";
-  $scope.route.finished = true;
-  $scope.route.flash = true;
-
+  $scope.grade_id = 15;
   // $scope.session.routes_count = $scope.routes.length;
+
+  $scope.route = {
+    grade: GradesFactory.getGradeFromId($scope.grade_id),
+    route_type: "dévers",
+    finished: true,
+    flash: true,
+    toprope: true,
+  };
+
+  $scope.nextGrade = function () {
+      $scope.grade_id++;
+      $scope.route.grade = GradesFactory.getGradeFromId($scope.grade_id);
+  };
+
+  $scope.nextGrade = function () {
+    var nextGrade = $scope.grade_id;
+    nextGrade++;
+    if (nextGrade < GradesFactory.all.length) {
+      $scope.grade_id++;
+      $scope.route.grade = GradesFactory.getGradeFromId($scope.grade_id);
+    }
+  };
+
+  $scope.previousGrade = function () {
+    var previousGrade = $scope.grade_id;
+    previousGrade--;
+    if (previousGrade > -1) {
+      $scope.grade_id--;
+      $scope.route.grade = GradesFactory.getGradeFromId($scope.grade_id);
+    }
+  };
+
 
   $scope.showNewRoutePopup = function() {
     $ionicPopup.show({
@@ -27,20 +54,24 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
         }
       ]
     }).then(function(newRoute) {
+
       if (newRoute) {
         createNewRoute();
+      }
+      else {
+        resetRouteData();
       }
     });
   };
 
   function createNewRoute() {
     var newRoute = {
-      title : GradesFactory.getGradeFromId($scope.route.grade_id).title + " " + $scope.route.route_type,
+      title : $scope.route.grade.title,
       // climb_style : $scope.route.climb_style,
       route_type : $scope.route.route_type,
       finished : $scope.route.finished,
       flash : $scope.route.flash,
-      grade : GradesFactory.getGradeFromId($scope.route.grade_id),
+      grade : $scope.route.grade,
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
@@ -48,13 +79,17 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     // resetRouteData();
   }
 
-  // function resetRouteData() {
-  //   var gym = new Firebase(window.app_url + "gyms/" + window.gymUniqueId);
-  //   gym.on("value", function(snapshot) {
-  //     $scope.session.gym = snapshot.val().title;
-  //   });
-  //   $scope.session.note = "";
-  // }
+  function resetRouteData() {
+    $scope.grade_id = 15;
+
+    $scope.route = {
+      grade: GradesFactory.getGradeFromId(15),
+      route_type: "dévers",
+      finished: true,
+      flash: true,
+      toprope: true,
+    };
+  }
 
   // $scope.validateCount = function() {
   //   $scope.session.validate_count = 0;
