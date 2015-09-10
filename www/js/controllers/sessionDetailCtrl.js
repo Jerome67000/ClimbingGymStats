@@ -11,7 +11,7 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     route_type: "dévers",
     finished: true,
     flash: true,
-    toprope: true,
+    toprope: false,
   };
 
   $scope.nextGrade = function () {
@@ -64,30 +64,43 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     });
   };
 
+  function setScore() {
+    var score = $scope.route.grade.id;
+    if ($scope.route.finished) {
+      if ($scope.route.flash) {
+        score = score * 4;
+      }
+      else {
+        score = score * 2;
+      }
+    }
+    return score;
+  }
+
   function createNewRoute() {
     var newRoute = {
       title : $scope.route.grade.title,
-      // climb_style : $scope.route.climb_style,
-      route_type : $scope.route.route_type,
+      climb_style : "Verticale",
+      // route_type : $scope.route.route_type,
       finished : $scope.route.finished,
       flash : $scope.route.flash,
       grade : $scope.route.grade,
+      score: setScore(),
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
     $scope.routes.$add(newRoute);
-    // resetRouteData();
+    resetRouteData();
   }
 
   function resetRouteData() {
-    $scope.grade_id = 15;
-
     $scope.route = {
-      grade: GradesFactory.getGradeFromId(15),
       route_type: "dévers",
+      grade: $scope.route.grade,
       finished: true,
       flash: true,
-      toprope: true,
+      toprope: false,
+      note : ""
     };
   }
 

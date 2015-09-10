@@ -126,6 +126,7 @@ app.factory('GradesFactory', function() {
       var letter = 97;
       while (letter < 100) {
         var g = {
+          id: grades_array.length,
           num : num,
           letter: String.fromCharCode(letter),
           title: num + String.fromCharCode(letter),
@@ -139,6 +140,9 @@ app.factory('GradesFactory', function() {
       all: grades_array,
       getGradeFromId: function(id) {
         return grades_array[id];
+      },
+      getGradeIndex: function(grade) {
+        return grades_array.indexOf(grade);
       },
     };
   }
