@@ -1,4 +1,5 @@
-%ion-view(view-title="Climbing Gym Stats" ng-controller="statsCtrl")
-  %ion-content.padding
+%ion-view(view-title="Climbing Gym Stats")
+  %ion-content.padding(ng-controller="gradesChartCtrl")
     Stats
-    %canvas#line.chart.chart-line{"chart-click" => "onClick", "chart-data" => "data", "chart-labels" => "labels", "chart-legend" => "true", "chart-series" => "series"}
+    %canvas#gradesDoughnut.chart.chart-doughnut(chart-data="data" chart-labels= "labels")
+    %h3 {{sessions}}
