@@ -1,7 +1,8 @@
 <ion-view view-title='Climbing Gym Stats'>
-  <ion-content class='padding' ng-controller='gradesChartCtrl'>
+  <ion-content class='padding'>
     Difficultés pratiquées
-    <canvas chart-data='data' chart-labels='labels' chart-legend='true' class='chart chart-doughnut' id='gradesDoughnut'></canvas>
-    <h3>{{sessions}}</h3>
+    <div class='gradesDoughnut' ng-controller='gradesChartCtrl'>
+      <canvas chart-data='gradesDoughnut.data' chart-labels='gradesDoughnut.labels' chart-legend='true' class='chart chart-doughnut' id='gradesDoughnut'></canvas>
+    </div>
   </ion-content>
 </ion-view>

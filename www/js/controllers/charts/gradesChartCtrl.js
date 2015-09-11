@@ -1,10 +1,12 @@
 app.controller('gradesChartCtrl', function($scope, $timeout, $firebaseArray) {
 
-  var routes = [];
-  $scope.data = [];
-  $scope.labels = [];
+  $scope.gradesDoughnut = {
+    data: [],
+    labels: []
+  };
 
-  new Firebase(window.app_url + "sessions/" + window.userUniqueId).on('value', function (sessions) {
+  function extractAllRoutes(sessions) {
+    var routes = [];
     sessions.forEach(function(session) {
       if (session.val() instanceof Object) {
         session.forEach(function(route) {
@@ -18,10 +20,12 @@ app.controller('gradesChartCtrl', function($scope, $timeout, $firebaseArray) {
         });
       }
     });
-    console.log("all routes", routes);
+    console.log("all routes parsed : ", routes);
+    return routes;
+  }
 
+  function countGrades(routes) {
     var grades = {};
-
     routes.forEach(function(route) {
       if (route.grade.title in grades) {
         grades[route.grade.title] = grades[route.grade.title] + 1;
@@ -30,20 +34,27 @@ app.controller('gradesChartCtrl', function($scope, $timeout, $firebaseArray) {
         grades[route.grade.title] = 1;
       }
     });
-
-  var labels = [];
-  var data = [];
-  for(var i in grades){
-    if(grades.hasOwnProperty(i)){
-      labels.push(i);
-      data.push(grades[i]);
-    }
+    return grades;
   }
 
-  $timeout(function() {
-    $scope.labels = labels;
-    $scope.data = data;
-  }, 0);
+  function setDataToChart(grades) {
+    var data = [];
+    var labels = [];
+    for(var grade in grades){
+      if(grades.hasOwnProperty(grade)){
+        labels.push(grade);
+        data.push(grades[grade]);
+      }
+    }
+    $timeout(function() {
+      $scope.gradesDoughnut.labels = labels;
+      $scope.gradesDoughnut.data = data;
+    }, 0);
+  }
 
+  new Firebase(window.app_url + "sessions/" + window.userUniqueId).on('value', function (sessions) {
+    var routes = extractAllRoutes(sessions);
+    var counted_grades = countGrades(routes);
+    setDataToChart(counted_grades);
   });
 });

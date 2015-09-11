@@ -1,5 +1,5 @@
 %ion-view(view-title="Climbing Gym Stats")
-  %ion-content.padding(ng-controller="gradesChartCtrl")
+  %ion-content.padding
     Difficultés pratiquées
-    %canvas#gradesDoughnut.chart.chart-doughnut(chart-data="data" chart-labels= "labels" chart-legend="true")
-    %h3 {{sessions}}
+    .gradesDoughnut(ng-controller="gradesChartCtrl")
+      %canvas#gradesDoughnut.chart.chart-doughnut(chart-data="gradesDoughnut.data" chart-labels= "gradesDoughnut.labels" chart-legend="true")
