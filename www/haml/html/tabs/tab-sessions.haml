@@ -1,4 +1,6 @@
 %ion-view(view-title="Climbing Gym Stats" ng-controller="sessionsCtrl")
+  %ion-nav-buttons(side="right")
+    %button.button.button-icon.button-clear.ion-android-settings(ng-click="openConfigPopup()")
   %ion-content.padding.sessions
     %button.button.button-icon.icon.ion-plus-circled(ng-click="showNewSessionPopup()")
     %h3 {{test}}

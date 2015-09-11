@@ -1,4 +1,6 @@
 %ion-view(title="Séance #" ng-controller="sessionDetailCtrl")
+  %ion-nav-buttons(side="right")
+    %button.button.button-icon.button-clear.ion-android-settings(ng-click="openConfigPopup()")
   %ion-header-bar.bar-positive
     %h1.title Séance : {{session.title}}
   %ion-content.padding.session

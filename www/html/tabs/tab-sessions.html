@@ -1,4 +1,7 @@
 <ion-view ng-controller='sessionsCtrl' view-title='Climbing Gym Stats'>
+  <ion-nav-buttons side='right'>
+    <button class='button button-icon button-clear ion-android-settings' ng-click='openConfigPopup()'></button>
+  </ion-nav-buttons>
   <ion-content class='padding sessions'>
     <button class='button button-icon icon ion-plus-circled' ng-click='showNewSessionPopup()'></button>
     <h3>{{test}}</h3>
