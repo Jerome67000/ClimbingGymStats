@@ -20,7 +20,6 @@ app.controller('gradesChartCtrl', function($scope, $timeout, $firebaseArray) {
         });
       }
     });
-    console.log("all routes parsed : ", routes);
     return routes;
   }
 
