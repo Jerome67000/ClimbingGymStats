@@ -4,8 +4,6 @@
   %ion-header-bar.bar-positive
     %h1.title Séance : {{session.title}}
   %ion-content.padding.session
-    %button.button.button-icon.icon.ion-plus-circled(ng-click="showNewRoutePopup()")
-
     .session-summary.padding
       %p.routes-validate Voies réussie {{session.routes_count}} sur {{session.validate_count}}
       %p.best-grad Meilleure voie {{session.best_route.grade_title}}
@@ -14,5 +12,8 @@
     .list.padding
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
         %i.icon.ion-android-checkbox-blank
-        {{route.title}}
+        {{route.title + " " + route.climb_style}}
         %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.validate}")
+
+  .bar.bar-footer
+    %button.button.button-icon.icon.ion-plus-circled.pull-right.fap-button(ng-click="showNewRoutePopup()")

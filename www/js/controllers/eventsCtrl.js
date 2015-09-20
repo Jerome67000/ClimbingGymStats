@@ -1,6 +1,5 @@
-app.controller('eventsCtrl', function($scope, $state, $firebaseArray, EventsFactory) {
+app.controller('eventsCtrl', function($scope, EventsFactory) {
 
-  var firebase = new Firebase(app_url);
-  $scope.events = EventsFactory;
+  $scope.events = EventsFactory.all;
 
 });

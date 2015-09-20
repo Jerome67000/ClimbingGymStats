@@ -3,8 +3,6 @@
     <button class='button button-icon button-clear ion-android-settings' ng-click='openConfigPopup()'></button>
   </ion-nav-buttons>
   <ion-content class='padding sessions'>
-    <button class='button button-icon icon ion-plus-circled' ng-click='showNewSessionPopup()'></button>
-    <h3>{{test}}</h3>
     <div class='list'>
       <a class='item item-icon-left' ng-repeat='session in sessions' ui-sref='tab.session-detail({ session_id: session.$id})'>
         <i class='icon ion-android-checkbox-blank'></i>
@@ -13,4 +11,7 @@
       </a>
     </div>
   </ion-content>
+  <div class='bar bar-footer'>
+    <button class='button button-icon icon ion-plus-circled pull-right fap-button' ng-click='showNewSessionPopup()'></button>
+  </div>
 </ion-view>

@@ -27,31 +27,31 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase',
     }
 
     // Define the actions of the hardware back button
-    $ionicPlatform.registerBackButtonAction(function () {
-      switch ($state.current.name) {
-        case "start":
-        case "tab.home":
-        case "tab.scan":
-        case "tab.followed":
-        case "tab.more":
-          ionic.Platform.exitApp();
-          break;
-
-        case "room": {
-          $state.go('tab.home');
-          $ionicHistory.clearHistory();
-        } break;
-        case "tab.posts":
-        case "tab.room-posts":
-        case "tab.reviews": {
-          $state.go('room');
-          $ionicHistory.clearHistory();
-        } break;
-
-        default:
-          navigator.app.backHistory();
-      }
-    }, 100);
+    // $ionicPlatform.registerBackButtonAction(function () {
+    //   switch ($state.current.name) {
+    //     case "start":
+    //     case "tab.home":
+    //     case "tab.scan":
+    //     case "tab.followed":
+    //     case "tab.more":
+    //       ionic.Platform.exitApp();
+    //       break;
+    //
+    //     case "room": {
+    //       $state.go('tab.home');
+    //       $ionicHistory.clearHistory();
+    //     } break;
+    //     case "tab.posts":
+    //     case "tab.room-posts":
+    //     case "tab.reviews": {
+    //       $state.go('room');
+    //       $ionicHistory.clearHistory();
+    //     } break;
+    //
+    //     default:
+    //       navigator.app.backHistory();
+    //   }
+    // }, 100);
   });
 })
 
