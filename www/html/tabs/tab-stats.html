@@ -4,12 +4,12 @@
   </ion-nav-buttons>
   <ion-content class='padding'>
     <div class='gradesDoughnut' ng-controller='gradesChartCtrl'>
-      <h2>Difficultés pratiquées</h2>
-      <canvas chart-data='gradesDoughnut.data' chart-labels='gradesDoughnut.labels' chart-legend='true' class='chart chart-doughnut' id='gradesDoughnut'></canvas>
+      <p class='padding'>Difficultés pratiquées</p>
+      <canvas chart-data='gradesDoughnut.data' chart-labels='gradesDoughnut.labels' chart-legend='true' class='chart chart-doughnut padding' id='gradesDoughnut'></canvas>
     </div>
     <div class='gradesDoughnut' ng-controller='progressionChartCtrl'>
-      <h2>Progression</h2>
-      <canvas chart-data='progressionLine.data' chart-labels='progressionLine.labels' chart-legend='true' chart-series='progressionLine.series' class='chart chart-line' id='evolutionLine'></canvas>
+      <p class='padding'>Courbe de rogression</p>
+      <canvas chart-data='progressionLine.data' chart-labels='progressionLine.labels' chart-series='progressionLine.series' class='chart chart-line padding' id='evolutionLine'></canvas>
     </div>
   </ion-content>
 </ion-view>

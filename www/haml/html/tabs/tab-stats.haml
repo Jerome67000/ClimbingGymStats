@@ -3,8 +3,8 @@
     %button.button.button-icon.button-clear.ion-android-settings(ng-click="openConfigPopup()")
   %ion-content.padding
     .gradesDoughnut(ng-controller="gradesChartCtrl")
-      %h2 Difficultés pratiquées
-      %canvas#gradesDoughnut.chart.chart-doughnut(chart-data="gradesDoughnut.data" chart-labels= "gradesDoughnut.labels" chart-legend="true")
+      %p.padding Difficultés pratiquées
+      %canvas#gradesDoughnut.chart.chart-doughnut.padding(chart-data="gradesDoughnut.data" chart-labels= "gradesDoughnut.labels" chart-legend="true")
     .gradesDoughnut(ng-controller="progressionChartCtrl")
-      %h2 Progression
-      %canvas#evolutionLine.chart.chart-line(chart-data="progressionLine.data" chart-labels= "progressionLine.labels" chart-legend="true" chart-series="progressionLine.series")
+      %p.padding Courbe de rogression
+      %canvas#evolutionLine.chart.chart-line.padding(chart-data="progressionLine.data" chart-labels= "progressionLine.labels" chart-series="progressionLine.series")

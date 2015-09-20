@@ -13,7 +13,7 @@
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
         %i.icon.ion-android-checkbox-blank
         {{route.title + " " + route.climb_style}}
-        %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.validate}")
+        %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.finished}")
 
   .bar.bar-footer
     %button.button.button-icon.icon.ion-plus-circled.pull-right.fap-button(ng-click="showNewRoutePopup()")
