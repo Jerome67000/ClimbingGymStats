@@ -69,6 +69,16 @@
 /* Layouts */
 /* Modules */
 /* Pages */
+.signin {
+  text-align: center; }
+  .signin img {
+    text-align: center; }
+
+.create-acc {
+  text-align: center; }
+  .create-acc img {
+    text-align: center; }
+
 /* Pages error */
 /*
 To customize the look and feel of Ionic, you can override the variables
