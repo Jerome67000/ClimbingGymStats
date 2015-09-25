@@ -100,7 +100,7 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
     $scope.routes.$add(newRoute).then(function(ref) {
-      setResumeStats();
+      setStats();
     });
     setStats();
   }
@@ -149,5 +149,6 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     validateCount();
     setBestRoute();
     setAverageGrade();
+    $scope.stats.routes_count = $scope.routes.length;
   }
 });
