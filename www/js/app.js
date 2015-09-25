@@ -55,8 +55,8 @@ var app = angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'firebase',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, $ionicConfigProvider) {
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
   // Pour avoir la même position de la tab-bar sur toutes les platformes !
   $ionicConfigProvider.navBar.alignTitle("center");
   $ionicConfigProvider.tabs.position('top');
