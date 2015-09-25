@@ -1,10 +1,21 @@
 app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory, RouteTypesFactory, ClimbStylesFactory) {
 
   var firebase = new Firebase(app_url);
-  $scope.routes = $firebaseArray(firebase.child('sessions/').child( window.userUniqueId).child($stateParams.session_id).child("routes"));
+  $scope.routes = $firebaseArray(firebase.child('sessions/').child(                 window.userUniqueId).child($stateParams.session_id).child("routes"));
 
-  $scope.grade_id = 15;
-  // $scope.session.routes_count = $scope.routes.length;
+  $scope.stats = {};
+
+  $scope.routes.$loaded().then(
+    function(routes) {
+      $scope.stats.routes_count = $scope.routes.length;
+      setStats();
+      console.log("routes_count", $scope.stats.routes_count);
+    })
+    .catch(function(error) {
+      console.log("Error:", error);
+  });
+
+  $scope.grade_id = 10;
 
   $scope.route = {
     grade: GradesFactory.getGradeFromId($scope.grade_id),
@@ -89,7 +100,9 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
-    $scope.routes.$add(newRoute);
+    $scope.routes.$add(newRoute).then(function(ref) {
+      setResumeStats();
+    });
     resetRouteData();
   }
 
@@ -104,37 +117,38 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     };
   }
 
-  // $scope.validateCount = function() {
-  //   $scope.session.validate_count = 0;
-  //   $scope.routes.forEach(function(route) {
-  //     if (route.validate) {
-  //       $scope.session.validate_count++;
-  //     }
-  //   });
-  // };
-  //
-  // $scope.calculScore = function() {
-  //   var best_score = 0;
-  //   $scope.routes.forEach(function(route) {
-  //     route.title = GradesFactory.getGrade(route.grade_id).title;
-  //     if (best_score < route.grade_id) {
-  //       $scope.session.best_route = route;
-  //     }
-  //   });
-  // };
-  //
-  // $scope.setAverageGrade = function() {
-  //   var totalScore = 0;
-  //   $scope.routes.forEach(function(route) {
-  //     totalScore += route.grade_id;
-  //   });
-  //   var average_grade_id = Math.round(totalScore/$scope.routes.length);
-  //   $scope.session.average_grad = GradesFactory.getGrade(average_grade_id).title;
-  // };
-  //
-  // $scope.validateCount();
-  // $scope.calculScore();
-  // $scope.setAverageGrade();
+  function validateCount() {
+    $scope.stats.validate_count = 0;
+    $scope.routes.forEach(function(route) {
+      if (route.finished) {
+        $scope.stats.validate_count++;
+      }
+    });
+  }
 
+  function setBestRoute() {
+    var best_score = 0;
+    $scope.routes.forEach(function(route) {
+      route.title = GradesFactory.getGradeFromId(route.grade_id);
+      if (best_score < route.grade.id) {
+        console.log("route");
+        $scope.stats.best_route = route.grade.title;
+      }
+    });
+  }
 
+  function setAverageGrade() {
+    var totalScore = 0;
+    $scope.routes.forEach(function(route) {
+      totalScore += route.grade.id;
+    });
+    var average_grade_id = Math.round(totalScore/$scope.routes.length);
+    $scope.stats.average_grad = GradesFactory.getGradeFromId(average_grade_id).title;
+  }
+
+  function setStats() {
+    validateCount();
+    setBestRoute();
+    setAverageGrade();
+  }
 });

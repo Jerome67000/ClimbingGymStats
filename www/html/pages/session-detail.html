@@ -7,14 +7,14 @@
   </ion-header-bar>
   <ion-content class='padding session'>
     <div class='session-summary padding'>
-      <p class='routes-validate'>Voies réussie {{session.routes_count}} sur {{session.validate_count}}</p>
-      <p class='best-grad'>Meilleure voie {{session.best_route.grade_title}}</p>
-      <p class='average-grad'>Cotation moyenne {{session.average_grad}}</p>
+      <p class='routes-validate'>Voies réussie {{stats.validate_count}} sur {{stats.routes_count}}</p>
+      <p class='best-grad'>Meilleure voie {{stats.best_route}}</p>
+      <p class='average-grad'>Cotation moyenne {{stats.average_grad}}</p>
     </div>
     <div class='list padding'>
       <a class='item item-icon-left item-icon-right' ng-repeat='route in routes'>
         <i class='icon ion-android-checkbox-blank'></i>
-        {{route.title + " " + route.climb_style}}
+        {{route.grade.title + " " + route.climb_style}}
         <i class='icon route-validate' ng-class="{ 'ion-android-checkmark-circle': route.finished}"></i>
       </a>
     </div>

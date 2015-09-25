@@ -5,14 +5,14 @@
     %h1.title Séance : {{session.title}}
   %ion-content.padding.session
     .session-summary.padding
-      %p.routes-validate Voies réussie {{session.routes_count}} sur {{session.validate_count}}
-      %p.best-grad Meilleure voie {{session.best_route.grade_title}}
-      %p.average-grad Cotation moyenne {{session.average_grad}}
+      %p.routes-validate Voies réussie {{stats.validate_count}} sur {{stats.routes_count}}
+      %p.best-grad Meilleure voie {{stats.best_route}}
+      %p.average-grad Cotation moyenne {{stats.average_grad}}
 
     .list.padding
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")
         %i.icon.ion-android-checkbox-blank
-        {{route.title + " " + route.climb_style}}
+        {{route.grade.title + " " + route.climb_style}}
         %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.finished}")
 
   .bar.bar-footer
