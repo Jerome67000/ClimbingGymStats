@@ -5,12 +5,9 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
 
   var sessions = new Firebase(window.app_url + "sessions/" + window.userUniqueId);
   sessions.on("value", function(snapshot) {
+    console.log("heyyy");
     $scope.session.title = "Séance #" + (snapshot.numChildren() + 1);
   });
-
-  $scope.test = function(session) {
-    console.log(session);
-  };
 
   $scope.showNewSessionPopup = function() {
     $ionicPopup.show({
@@ -37,7 +34,7 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
   function createNewSession() {
     var session = {
       title : $scope.session.title,
-      created_at : Firebase.ServerValue.TIMESTAMP,
+      created_at : moment(Firebase.ServerValue.TIMESTAMP).format("MMM Do YYYY"),
       location: $scope.session.gym,
       note : $scope.session.note === undefined ? "" : $scope.session.note,
     };
@@ -55,6 +52,14 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
 
   resetSessionData();
 
+  $scope.openSessionModal = function(index) {
+    $scope.modal.show();
+  };
+
+  $scope.closeSessionModal = function() {
+    $scope.modal.hide();
+  };
+
   // Load the modal from the given template URL
   $ionicModal.fromTemplateUrl('html/popups/new-session.html',
     function($ionicModal) {
@@ -63,12 +68,4 @@ app.controller('sessionsCtrl', function($scope, $state, $ionicPopup, $ionicModal
     scope: $scope,
     animation: 'slide-in-up'
   });
-
-  $scope.openSessionModal = function(index) {
-    $scope.modal.show();
-  };
-
-  $scope.closeSessionModal = function() {
-    $scope.modal.hide();
-  };
 });

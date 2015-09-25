@@ -1,9 +1,10 @@
 app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory, RouteTypesFactory, ClimbStylesFactory) {
 
+  $scope.stats = {};
+  $scope.grade_id = 10;
+
   var firebase = new Firebase(app_url);
   $scope.routes = $firebaseArray(firebase.child('sessions/').child(                 window.userUniqueId).child($stateParams.session_id).child("routes"));
-
-  $scope.stats = {};
 
   $scope.routes.$loaded().then(
     function(routes) {
@@ -15,7 +16,6 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
       console.log("Error:", error);
   });
 
-  $scope.grade_id = 10;
 
   $scope.route = {
     grade: GradesFactory.getGradeFromId($scope.grade_id),
@@ -142,7 +142,9 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
       totalScore += route.grade.id;
     });
     var average_grade_id = Math.round(totalScore/$scope.routes.length);
-    $scope.stats.average_grad = GradesFactory.getGradeFromId(average_grade_id).title;
+    if (!isNaN(average_grade_id)) {
+      $scope.stats.average_grad = GradesFactory.getGradeFromId(average_grade_id).title;
+    }
   }
 
   function setStats() {

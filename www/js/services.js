@@ -42,14 +42,6 @@ app.factory('UsersFactory', function ($firebaseArray, $firebaseObject) {
 app.factory('SessionsFactory', function ($firebaseArray, $firebaseObject, $state, UsersFactory) {
   var firebase = new Firebase(app_url);
   var sessions = $firebaseArray(firebase.child('sessions/' + window.userUniqueId));
-  sessions.$loaded().then(function(sessions) {
-    sessions.forEach(function(session) {
-        session.created_at = moment(session.created_at).format("MMM Do YYYY");
-      });
-    })
-    .catch(function(error) {
-      console.log("Error:", error);
-    });
 
   var Sessions = {
     all: sessions,
