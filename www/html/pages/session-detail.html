@@ -13,7 +13,7 @@
     </div>
     <div class='list padding'>
       <a class='item item-icon-left item-icon-right' ng-repeat='route in routes'>
-        <i class='icon ion-android-checkbox-blank'></i>
+        <i class='icon ion-android-checkbox-blank' ng-class='route.css_color'></i>
         {{route.grade.title + " " + route.climb_style}}
         <i class='icon route-validate' ng-class="{ 'ion-android-checkmark-circle': route.finished}"></i>
       </a>

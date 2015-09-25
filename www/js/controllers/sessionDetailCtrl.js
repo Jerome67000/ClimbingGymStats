@@ -23,6 +23,7 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     finished: true,
     flash: true,
     toprope: false,
+    test: "red"
   };
 
   $scope.nextGrade = function () {
@@ -96,6 +97,7 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
       flash : $scope.route.flash,
       grade : $scope.route.grade,
       score: setScore(),
+      css_color: "grad" + $scope.route.grade.title,
       note : $scope.route.note === undefined ? "" : $scope.route.note,
       picture : $scope.route.picture === undefined ? "" : $scope.route.picture,
     };
