@@ -48,7 +48,6 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     }
   };
 
-
   $scope.showNewRoutePopup = function() {
     $ionicPopup.show({
       templateUrl: 'html/popups/new-route.html',
@@ -103,7 +102,7 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     $scope.routes.$add(newRoute).then(function(ref) {
       setResumeStats();
     });
-    resetRouteData();
+    setStats();
   }
 
   function resetRouteData() {
