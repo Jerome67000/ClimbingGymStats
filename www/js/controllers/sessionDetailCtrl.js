@@ -1,9 +1,9 @@
-app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseArray, GradesFactory, RouteTypesFactory, ClimbStylesFactory) {
+app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ionicPopup, $firebaseObject, $firebaseArray, GradesFactory, RouteTypesFactory, ClimbStylesFactory) {
 
   $scope.stats = {};
   $scope.grade_id = 10;
-
   var firebase = new Firebase(app_url);
+
   $scope.routes = $firebaseArray(firebase.child('sessions/').child(                 window.userUniqueId).child($stateParams.session_id).child("routes"));
 
   $scope.routes.$loaded().then(
@@ -15,7 +15,6 @@ app.controller('sessionDetailCtrl', function($scope, $state, $stateParams, $ioni
     .catch(function(error) {
       console.log("Error:", error);
   });
-
 
   $scope.route = {
     grade: GradesFactory.getGradeFromId($scope.grade_id),

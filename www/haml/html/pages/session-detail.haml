@@ -1,13 +1,17 @@
-%ion-view(title="Séance #" ng-controller="sessionDetailCtrl")
+%ion-view(title="Détail de séance" ng-controller="sessionDetailCtrl")
   %ion-nav-buttons(side="right")
     %button.button.button-icon.button-clear.ion-android-settings(ng-click="openConfigPopup()")
-  %ion-header-bar.bar-positive
-    %h1.title Séance : {{session.title}}
   %ion-content.padding.session
-    .session-summary.padding
-      %p.routes-validate Voies réussie {{stats.validate_count}} sur {{stats.routes_count}}
-      %p.best-grad Meilleure voie {{stats.best_route}}
-      %p.average-grad Cotation moyenne {{stats.average_grad}}
+    .session-summary.padding(ng-if="stats.routes_count > 0")
+      .routes-validate
+        %h4.title Voies réussie
+        %h4.result {{stats.validate_count}} sur {{stats.routes_count}}
+      .best-grad
+        %h4.title  Meilleure voie
+        %h4.result {{stats.best_route}}
+      .average-grad
+        %h4.title  Cotation moyenne
+        %h4.result {{stats.average_grad}}
 
     .list.padding
       %a.item.item-icon-left.item-icon-right(ng-repeat="route in routes")

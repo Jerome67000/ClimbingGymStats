@@ -1,15 +1,21 @@
-<ion-view ng-controller='sessionDetailCtrl' title='Séance #'>
+<ion-view ng-controller='sessionDetailCtrl' title='Détail de séance'>
   <ion-nav-buttons side='right'>
     <button class='button button-icon button-clear ion-android-settings' ng-click='openConfigPopup()'></button>
   </ion-nav-buttons>
-  <ion-header-bar class='bar-positive'>
-    <h1 class='title'>Séance : {{session.title}}</h1>
-  </ion-header-bar>
   <ion-content class='padding session'>
-    <div class='session-summary padding'>
-      <p class='routes-validate'>Voies réussie {{stats.validate_count}} sur {{stats.routes_count}}</p>
-      <p class='best-grad'>Meilleure voie {{stats.best_route}}</p>
-      <p class='average-grad'>Cotation moyenne {{stats.average_grad}}</p>
+    <div class='session-summary padding' ng-if='stats.routes_count &gt; 0'>
+      <div class='routes-validate'>
+        <h4 class='title'>Voies réussie</h4>
+        <h4 class='result'>{{stats.validate_count}} sur {{stats.routes_count}}</h4>
+      </div>
+      <div class='best-grad'>
+        <h4 class='title'>Meilleure voie</h4>
+        <h4 class='result'>{{stats.best_route}}</h4>
+      </div>
+      <div class='average-grad'>
+        <h4 class='title'>Cotation moyenne</h4>
+        <h4 class='result'>{{stats.average_grad}}</h4>
+      </div>
     </div>
     <div class='list padding'>
       <a class='item item-icon-left item-icon-right' ng-repeat='route in routes'>

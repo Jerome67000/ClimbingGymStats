@@ -1,6 +1,6 @@
 {
-  "name": "ClimbingGymStats",
-  "app_id": "",
+  "name": "Climbing Gym Stats",
+  "app_id": "fr.jejedev.climbinggymstats",
   "gulpStartupTasks": [
     "sass",
     "watch"
