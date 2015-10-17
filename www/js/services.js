@@ -99,13 +99,6 @@ app.factory('GymFactory', function ($firebaseObject) {
   return Gym;
 });
 
-// //// EVENTS
-// app.factory('EventsFactory', function ($firebaseArray) {
-//   var firebase = new Firebase(app_url);
-//   var events = $firebaseArray(firebase.child('gyms/').child(window.gymUniqueId).child("events/"));
-//   return events;
-// });
-
 //// EVENTS
 app.factory('EventsFactory', function ($firebaseArray) {
  var firebase = new Firebase(app_url);
