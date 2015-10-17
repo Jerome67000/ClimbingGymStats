@@ -4,7 +4,7 @@ app.controller('eventsCtrl', function($scope, EventsFactory) {
 
   $scope.doRefresh = function () {
     EventsFactory.all.$loaded().then(
-      function(x) {
+      function() {
         $scope.events = EventsFactory.all;
       }).catch(
       function(error) {
