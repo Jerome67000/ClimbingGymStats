@@ -2,8 +2,9 @@
   %ion-nav-buttons(side="right")
     %button.button.button-icon.button-clear.ion-android-settings(ng-click="openConfigPopup()")
   %ion-content.padding
-    .list
-      %a.item.item-thumbnail-left(ng-repeat="event in events")
+    %ion-refresher(on-refresh= "doRefresh()" pulling-text="Pull to refresh...")
+    %ion-list
+      %ion-item.item-thumbnail-left(ng-repeat="event in events")
         %img(ng-src="{{event.picture}}")
         %h2 {{event.title}}
         %p {{event.description}}
