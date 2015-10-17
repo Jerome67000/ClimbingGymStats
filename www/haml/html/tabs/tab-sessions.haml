@@ -8,5 +8,7 @@
         {{session.title}}
         %span.item-note {{session.created_at}}
 
-  .bar.bar-footer
-    %button.button.button-icon.icon.ion-plus-circled.pull-right.fap-button(ng-click="showNewSessionPopup()")
+  .float-button
+    %span.height-fix
+      %a.content(ng-click="showNewSessionPopup()")
+        %i.ion-android-add

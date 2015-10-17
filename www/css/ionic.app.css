@@ -15,9 +15,6 @@
 .route-validate {
   color: #4fad1c; }
 
-.button.button-icon.icon.ion-plus-circled.pull-right.fap-button {
-  color: #278e91; }
-
 .grad4 {
   color: #329b00; }
 
@@ -79,6 +76,35 @@
   margin-top: 2px;
   margin-bottom: 2px;
   text-align: right; }
+
+.float-button {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 30px;
+  padding: 25px;
+  background: #278e91;
+  font-size: 40px;
+  position: fixed;
+  bottom: 15px;
+  /* Adjust to where you want it */
+  right: 15px;
+  /* Adjust to where you want it */
+  z-index: 9999; }
+
+.float-button .height_fix {
+  margin-top: 100%; }
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -20px;
+  /* Note, this must be half the font size */
+  color: white; }
 
 /* Pages */
 .signin {

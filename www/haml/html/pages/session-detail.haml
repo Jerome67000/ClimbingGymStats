@@ -19,5 +19,7 @@
         {{route.grade.title + " " + route.climb_style}}
         %i.icon.route-validate(ng-class="{ 'ion-android-checkmark-circle': route.finished}")
 
-  .bar.bar-footer
-    %button.button.button-icon.icon.ion-plus-circled.pull-right.fap-button(ng-click="showNewRoutePopup()")
+  .float-button
+    %span.height-fix
+      %a.content(ng-click="showNewRoutePopup()")
+        %i.ion-android-add
